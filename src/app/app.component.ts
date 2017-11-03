@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['../styles.css']
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'EArkiv prototype';
