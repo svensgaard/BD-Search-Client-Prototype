@@ -1,0 +1,120 @@
+/* -----------------------  General styles ---------------------- */
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.categoryContent tr {
+    cursor: pointer;
+}
+
+.mainPlaceholder {
+    width: 100%;
+}
+
+/* -----------------------  Header styles ---------------------- */
+header {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #012F60;
+}
+
+.headerPlaceholder {
+    width: 600px;
+    margin: 10px auto;
+}
+
+.searchInput {
+    width: 400px;
+}
+
+.searchForm {
+    text-align: left;
+}
+
+.advancedLink {
+    display: block;
+}
+
+.advanced {
+    display: none;
+}
+
+/* -----------------------  Aside styles ---------------------- */
+
+aside {
+    padding: 0 10px;
+    width: 200px;
+    float: left;
+    border-right: 1px solid #012F60;
+}
+
+/* -----------------------  Main styles ---------------------- */
+
+main {
+    padding: 5px;
+    overflow: hidden;
+}
+
+.category {
+    width: 100%;
+}
+
+.categoryHeader {
+    width: 99%;
+    background-color: #012F60;
+    color: #fff;
+    padding: 0.6%;
+    font-weight: bold;
+}
+
+.categoryContent {
+    width: 100%;
+}
+
+.categoryContent table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.categoryContent tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.categoryContent tr:nth-child(even) {
+    background-color: #cde5fe;
+}
+
+.categoryContent th,
+.categoryContent td {
+    border-right: 1px solid #012F60;
+    border-left: 1px solid #012F60;
+    padding: 0.2em;
+}
+
+.categoryContent th {
+    text-align: left;
+    border-bottom: 1px solid #012F60;
+}
+
+/*----------- Column classes -------------*/
+
+.checkboxColumn {
+    width: 20px;
+}
+
+.shortDateColumn {
+    width: 90px;
+}
+
+.longDateColumn {
+    width: 55px;
+}
+
+.docTypeColumn {
+    width: 110px;
+}
