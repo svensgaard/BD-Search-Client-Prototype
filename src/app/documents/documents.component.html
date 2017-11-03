@@ -13,7 +13,7 @@
                 </tr>
                 <tr *ngFor="let document of category.category_docs">
                     <td><input type="checkbox"></td>
-                    <td>{{document.date | day}} d. {{document.date | date}}</td>
+                    <td>{{document.date | date:'EEEE'}} d. {{document.date | date:'d'}}</td>
                     <td>{{document.type}}</td>
                     <td>{{document.key}}: {{document.value}}</td>
                 </tr>
