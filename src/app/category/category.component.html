@@ -1,0 +1,20 @@
+
+<div class="categoryHeader">{{category.name}} ({{category.numberOfDocuments}})</div>
+<div class="categoryContent">
+	<table>
+		<tr>
+			<th class="checkboxColumn"><input type="checkbox"></th>
+			<th class="shortDateColumn">Dag</th>
+			<th class="docTypeColumn">Dokumenttype</th>
+			<th>Details</th>
+		</tr>
+		<tr *ngFor="let document of category.documents">
+			<td><input type="checkbox"></td>
+			<td>{{document.uploadedDate | date:'EEEE'}} d.
+				{{document.uploadedDate | date:'d'}}</td>
+			<td>{{document.documentType}}</td>
+			<td>{{document.detail}}</td>
+		</tr>
+
+	</table>
+</div>

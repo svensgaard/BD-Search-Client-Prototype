@@ -7,6 +7,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { DocumentsComponent } from './documents/documents.component';
 import { FilterComponent } from './filter/filter.component';
 import { SearchComponent } from './search/search.component';
+import { CategoryComponent } from './category/category.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { SearchComponent } from './search/search.component';
     AppComponent,
     DocumentsComponent,
     FilterComponent,
-    SearchComponent
+    SearchComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

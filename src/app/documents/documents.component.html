@@ -1,23 +1,5 @@
 <main>
     <div *ngFor="let category of categories" class="category">
-        <div class="categoryHeader">
-            {{category.name}} {{category.numberOfDocuments}}
-        </div>
-        <div class="categoryContent">
-            <table>
-                <tr>
-                    <th class="checkboxColumn"><input type="checkbox"></th>
-                    <th class="shortDateColumn">Dag</th>
-                    <th class="docTypeColumn">Dokumenttype</th>
-                    <th>Detaljer</th>
-                </tr>
-                <tr *ngFor="let document of category.category_docs">
-                    <td><input type="checkbox"></td>
-                    <td>{{document.date | date:'EEEE'}} d. {{document.date | date:'d'}}</td>
-                    <td>{{document.type}}</td>
-                    <td>{{document.key}}: {{document.value}}</td>
-                </tr>
-            </table>
-        </div>
+       <app-category [category]='category'></app-category>
     </div>
 </main>

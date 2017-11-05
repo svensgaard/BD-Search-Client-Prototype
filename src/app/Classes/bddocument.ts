@@ -1,13 +1,12 @@
 export class BDDocument {
-  date: Date;
+  uploadedDate: Date;
   documentType: string;
   detail: string;
   
-  constructor(date: Date, docType: string, detail: string) {
-    this.date = date;
+  constructor(uploadedDate: Date, docType: string, detail: string) {
+    this.uploadedDate = uploadedDate;
     this.documentType = docType;
     this.detail = detail;
   }
-  
   
 }

@@ -2,7 +2,7 @@ import {BDDocument} from './bddocument';
 
 export class Category {
   name: string;
-  private _numberofdocuments: number;
+  private _numberOfDocuments: number;
   documents: BDDocument[];
 
   constructor(name: string) {
@@ -10,8 +10,7 @@ export class Category {
     this.documents = new Array<BDDocument>();
   }
   
-  set numberofdocuments(numberofdocuments: number) {this._numberofdocuments = numberofdocuments; }
-  get numberofdocuments(): number {return this.documents.length; }
+  get numberOfDocuments(): number {return this.documents.length; }
 
   addDocument(docToAdd: BDDocument) {
     this.documents.push(docToAdd);
