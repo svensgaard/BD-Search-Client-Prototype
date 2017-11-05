@@ -1,20 +1,11 @@
 import {BDDocument} from './bddocument';
 import {Category} from './category';
 
-enum DividedByEnum {
-  Category,
-  Months,
-  Netbox
-}
-enum SortByEnum {
-  rising,
-  falling,
-}
 
 export class Filter {
 
-  dividedBy: DividedByEnum;
-  sortBy: SortByEnum;
+  dividedBy: string;
+  sortBy: string;
 
   dateTo: Date;
   dateFrom: Date;

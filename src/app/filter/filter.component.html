@@ -1,22 +1,38 @@
 <aside>
-    <h3>Opdel efter</h3>
-    <select id="divideBy">
-        <option>Måned</option>
-        <option>* Netbox mapper *</option>
-        <option>* Andre *</option>
-    </select>
-    <select id="direction">
-        <option>Stigende</option>
-        <option>Faldende</option>
-    </select>
+	<h3>Opdel efter</h3>
+	<select [(ngModel)]="filter.dividedBy" id="divideBy"
+		(change)="onFilterChanged()">
+		<option>Dokument type</option>
+		<option>Maaned</option>
+		<option>Netbox mapper</option>
+		<option>Andre</option>
+	</select> <select [(ngModel)]="filter.sortBy" id="direction"
+		(change)="onFilterChanged()">
+		<option>Stigende</option>
+		<option>Faldende</option>
+	</select>
 
-    <h3>Filtre</h3>
+	<h3>Filtre</h3>
 
-    <h4>Dato</h4>
-    <div>fra <input type="text" id="dateFrom"></div>
-    <div>til <input type="text" id="dateTo"></div>
+	<h4>Dato</h4>
+	<div>
+		fra <input type="date" [(ngModel)]="filter.dateFrom" id="dateFrom"
+			(change)="onFilterChanged()" />
+	</div>
+	<div>
+		til <input type="date" [(ngModel)]="filter.dateTo" id="dateTo"
+			(change)="onFilterChanged()" />
+	</div>
 
-    <h4>Synlighed</h4>
-    <div><input type="checkbox" id="showInNetbank"> Synlig i Netbank</div>
-    <div><input type="checkbox" id="showDocsWithErrors"> Vis fejlbehaeftede</div>
+	<h4>Synlighed</h4>
+	<div>
+		<input type="checkbox" [(ngModel)]="filter.showOnlyVisibleInNetBank"
+			id="showInNetbank" (change)="onFilterChanged()"> Synlig i
+		Netbank
+	</div>
+	<div>
+		<input type="checkbox" [(ngModel)]="filter.showFaultyDocuments"
+			id="showDocsWithErrors" (change)="onFilterChanged()"> Vis
+		fejlbehaeftede
+	</div>
 </aside>
