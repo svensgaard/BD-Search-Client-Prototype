@@ -27,7 +27,6 @@ export class FilterComponent implements OnInit {
   }
 
   onFilterChanged() {
-    console.log('FIRE');
     this.onFilter.emit(this.filter);
   }
 }

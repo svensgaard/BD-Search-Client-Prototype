@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
   }
 
   keyDownFunction(event) {
-    if (event.keyCode === 13) {
+    if (event.keyCode === 13) { //Enter
       this.search();
     }
   }
@@ -26,9 +26,9 @@ export class SearchComponent implements OnInit {
   search() {
     let result = new Array<BDDocument>();
     // Do the search
-    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer'));
-    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer'));
-    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer'));
+    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer', true));
+    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer', false));
+    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer', true));
 
     //Emit result
     this.onSearched.emit(result);

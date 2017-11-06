@@ -3,7 +3,7 @@
 
 <div class="mainPlaceholder">
 	<!-- Filters -->
-	<app-filter></app-filter>
+	<app-filter (onFilter)="onFilter($event)"></app-filter>
 
 	<!-- output -->
 	<app-documents [categories]="filteredResults" ></app-documents>

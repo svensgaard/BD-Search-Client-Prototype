@@ -42,7 +42,14 @@ export class AppComponent implements OnInit {
     this._filteredResults = this.filter.getFilteredDocs(this.results);
   }
 
-  get filteredResults(): Category[] {    
+  onFilter(filter: Filter) {
+    this.filter = filter;
+    if (this.results != null) {
+      this._filteredResults = this.filter.getFilteredDocs(this.results);
+    }
+  }
+
+  get filteredResults(): Category[] {
     return this._filteredResults;
   }
 
