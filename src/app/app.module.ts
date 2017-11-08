@@ -9,6 +9,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { FilterComponent } from './filter/filter.component';
 import { SearchComponent } from './search/search.component';
 import { CategoryComponent } from './category/category.component';
+import { DocumentService } from './document.service';
 
 
 @NgModule({
@@ -24,7 +25,7 @@ import { CategoryComponent } from './category/category.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DocumentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

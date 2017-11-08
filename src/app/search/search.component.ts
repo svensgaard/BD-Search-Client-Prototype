@@ -1,6 +1,7 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Category} from '../Classes/category';
 import {BDDocument} from '../Classes/bddocument';
+import { DocumentService } from '../document.service';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +12,8 @@ export class SearchComponent implements OnInit {
 
   @Output() onSearched = new EventEmitter<BDDocument[]>();
 
-  constructor() {}
+  private _results: BDDocument[];
+  constructor(private documentService: DocumentService) {}
 
   ngOnInit() {
     this.search();
@@ -22,16 +24,16 @@ export class SearchComponent implements OnInit {
       this.search();
     }
   }
+  
+  set result(res: BDDocument[]) {
+    this._results = res;
+    this.onSearched.emit(res);
+  }
 
   search() {
-    let result = new Array<BDDocument>();
-    // Do the search
-    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer', true));
-    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer', false));
-    result.push(new BDDocument(new Date(), 'Kontoudtog', 'detaljer', true));
-
     //Emit result
-    this.onSearched.emit(result);
+    this.documentService.getDocuments('2059083')
+      .subscribe(docs => this.result = docs);
   }
 
 

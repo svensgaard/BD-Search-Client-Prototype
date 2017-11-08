@@ -1,16 +1,62 @@
+//export class BDDocument1 {
+//  uploadedDate: Date;
+//  documentType: string;
+//  detail: string;
+//  visibleInNetBox: boolean;
+//  markedAsFaulty: boolean;
+//  
+//  constructor(uploadedDate: Date, docType: string, detail: string, visibleInNetBox: boolean) {
+//    this.uploadedDate = uploadedDate;
+//    this.documentType = docType;
+//    this.detail = detail;
+//    this.visibleInNetBox = visibleInNetBox;
+//    this.markedAsFaulty = false;
+//  }
+//  
+//}
 export class BDDocument {
-  uploadedDate: Date;
-  documentType: string;
-  detail: string;
-  visibleInNetBox: boolean;
-  markedAsFaulty: boolean;
+  refnummer: string;
+  id: string;
+  bId: string;
+  udskriftsDato: string;
+  dokType: string;
+  visRaadgiver: string;
+  synligNetbank: string;
+  sletDato: string;
+  fejlMarkeret: string;
+  forsendelsesKode: string;
+  n1: string;
+  n1_value: string;
+  n2: string;
+  n2_value: string;
+  tekst: string;
+  tekst_value: string;
   
-  constructor(uploadedDate: Date, docType: string, detail: string, visibleInNetBox: boolean) {
-    this.uploadedDate = uploadedDate;
-    this.documentType = docType;
-    this.detail = detail;
-    this.visibleInNetBox = visibleInNetBox;
-    this.markedAsFaulty = false;
+  
+  
+  constructor(refnummer: string, id: string, bId: string, udskriftsDato: string, dokType: string, visRaadgiver: string,
+  synligNetbank: string, sletDato: string, fejlMarkeret: string, forsendelsesKode: string, n1: string, n1_value: string, n2: string,
+  n2_value: string, tekst: string, tekst_value: string) {
+    this.refnummer = refnummer;
+    this.id = id;
+    this.bId = bId;
+    this.udskriftsDato = udskriftsDato;
+    this.dokType = dokType;
+    this.visRaadgiver = visRaadgiver;
+    this.synligNetbank = synligNetbank;
+    this.sletDato = sletDato;
+    this.fejlMarkeret = fejlMarkeret;
+    this.forsendelsesKode = forsendelsesKode;
+    this.n1 = n1;
+    this.n1_value = n1_value;
+    this.n2 = n2;
+    this.n2_value = n2_value;
+    this.tekst = tekst;
+    this.tekst_value = tekst_value;
+  }
+  
+  get detail(): string {
+    return ''; //TODO
   }
   
 }

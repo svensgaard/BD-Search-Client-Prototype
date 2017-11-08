@@ -15,11 +15,11 @@
 
 	<h4>Dato</h4>
 	<div>
-		fra <input type="date" [(ngModel)]="filter.dateFrom" id="dateFrom"
+		fra <input type="date" [ngModel]="filter.dateFrom | date:'yyyy-MM-dd'" (ngModelChange)="filter.dateFrom=$event" id="dateFrom"
 			(change)="onFilterChanged()" />
 	</div>
 	<div>
-		til <input type="date" [(ngModel)]="filter.dateTo" id="dateTo"
+		til <input type="date" [ngModel]="filter.dateTo | date:'yyyy-MM-dd'" (ngModelChange)="filter.dateTo=$event" id="dateTo"
 			(change)="onFilterChanged()" />
 	</div>
 

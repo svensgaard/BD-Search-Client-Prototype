@@ -10,9 +10,9 @@
 		</tr>
 		<tr *ngFor="let document of category.documents">
 			<td><input type="checkbox"></td>
-			<td>{{document.uploadedDate | date:'EEEE'}} d.
-				{{document.uploadedDate | date:'d'}}</td>
-			<td>{{document.documentType}}</td>
+			<td>{{document.udskriftsDato | date:'EEEE'}} d.
+				{{document.udskriftsDato | date:'d'}}</td>
+			<td>{{document.dokType}}</td>
 			<td>{{document.detail}}</td>
 		</tr>
 

@@ -4,10 +4,10 @@ import {Category} from './category';
 
 export class Filter {
 
-  static monthNames: string[] = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'
+  static monthNames: string[] = ['Janurar', 'Februrar', 'Marts', 'April', 'Maj', 'Juni',
+    'Juli', 'August', 'September', 'Oktober', 'November', 'December'
   ];
-  
+
   dividedBy: string;
   sortBy: string;
 
@@ -18,7 +18,7 @@ export class Filter {
   showFaultyDocuments: boolean;
 
   categories: Category[];
-  
+
 
   getFilteredDocs(docs: BDDocument[]): Category[] {
 
@@ -26,13 +26,12 @@ export class Filter {
 
     for (let doc of docs) {
       if (this.checkDate(doc) && this.checkNetBank(doc) && this.checkFaulty(doc)) {
-        
         if (this.dividedBy === 'Dokument type') {
-          this.addToCategories(doc.documentType, doc);
+          this.addToCategories(doc.dokType, doc);
         } else if (this.dividedBy === 'Dato') {
-          this.addToCategories(Filter.monthNames[doc.uploadedDate.getMonth()], doc);
+          this.addToCategories(Filter.monthNames[new Date(doc.udskriftsDato).getMonth()], doc);
         } else if (this.dividedBy === 'Netbox') {
-          this.addToCategories(doc.documentType, doc);
+          this.addToCategories(doc.dokType, doc);
         }
 
       }
@@ -63,7 +62,7 @@ export class Filter {
   checkDate(doc: BDDocument): boolean {
     if (doc === null) {return false;}
 
-    if (doc.uploadedDate >= new Date(this.dateFrom) && doc.uploadedDate <= new Date(this.dateTo)) {
+    if (new Date(doc.udskriftsDato) >= new Date(this.dateFrom) && new Date(doc.udskriftsDato) <= new Date(this.dateTo)) {
       return true;
     }
 
@@ -72,8 +71,8 @@ export class Filter {
 
   checkNetBank(doc: BDDocument): boolean {
     if (doc === null) {return false;}
-    
-    if (this.showOnlyVisibleInNetBank && !doc.visibleInNetBox) {
+
+    if (this.showOnlyVisibleInNetBank && doc.synligNetbank === 'N') {
       return false;
     }
 
@@ -82,8 +81,8 @@ export class Filter {
 
   checkFaulty(doc: BDDocument): boolean {
     if (doc === null) {return false;}
-    
-    if (!this.showFaultyDocuments && doc.markedAsFaulty) {
+
+    if (!this.showFaultyDocuments && doc.fejlMarkeret === 'J') {
       return false;
     }
 

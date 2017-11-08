@@ -12,18 +12,28 @@ export class FilterComponent implements OnInit {
 
   filter: Filter;
   private _selectedDividedBy: string;
-  
+
   constructor() {
-    this.filter = new Filter();
-    this.filter.dividedBy = 'Dokument type';
-    this.filter.sortBy = 'Faldende';
-    this.filter.dateFrom = new Date();
-    this.filter.dateTo = new Date();
-    this.filter.showOnlyVisibleInNetBank = false;
-    this.filter.showFaultyDocuments = false;
+
   }
 
   ngOnInit() {
+    this.filter = new Filter();
+    this.filter.dividedBy = 'Dokument type';
+    this.filter.sortBy = 'Faldende';
+    
+    //Date magic
+    let now = new Date();
+    let oneYearAgo = new Date();    
+    oneYearAgo.setFullYear(now.getFullYear() - 1);
+    this.filter.dateFrom = oneYearAgo;
+    this.filter.dateTo = now;
+
+    this.filter.showOnlyVisibleInNetBank = false;
+    this.filter.showFaultyDocuments = false;
+    
+    //Give filter to app component
+    this.onFilterChanged();
   }
 
   onFilterChanged() {
