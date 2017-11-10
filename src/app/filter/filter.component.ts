@@ -32,8 +32,7 @@ export class FilterComponent implements OnInit {
     this.filter.showOnlyVisibleInNetBank = false;
     this.filter.showFaultyDocuments = false;
     
-    //Give filter to app component
-    this.onFilterChanged();
+    
   }
 
   onFilterChanged() {

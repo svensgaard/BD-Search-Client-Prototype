@@ -1,6 +1,7 @@
 
-<div class="categoryHeader">{{category.name}} ({{category.numberOfDocuments}})</div>
-<div class="categoryContent">
+<div class="categoryHeader" (click)="onClickHeader()">{{category.name}}
+	({{category.numberOfDocuments}})</div>
+<div class="categoryContent" [style.display]="display">
 	<table>
 		<tr>
 			<th class="checkboxColumn"><input type="checkbox"></th>

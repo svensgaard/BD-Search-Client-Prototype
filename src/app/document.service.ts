@@ -10,14 +10,17 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class DocumentService {
 
-  private documentsUrl = 'http://localhost:8080/api.php?id=2059083';
+  private documentsUrl = 'http://localhost:8080/';
 
   constructor(
     private http: HttpClient
   ) {}
 
-  getDocuments(id: string): Observable<BDDocument[]> {
-    return this.http.get<BDDocument[]>(this.documentsUrl);
-    }
+  getDocuments(id: string, searchTerm: string): Observable<BDDocument[]> {
+    let realUrl = this.documentsUrl + 'api.php?id='+ id + '&searchTerm=' + encodeURIComponent(searchTerm);
+    //realUrl = encodeURI(realUrl);
+    console.log(realUrl);
+    return this.http.get<BDDocument[]>(realUrl);
+   }
 
 }

@@ -20,11 +20,29 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //First filter is everything and on dok type
+    let firstFilter = new Filter();
+    firstFilter.dividedBy = 'Dokument type';
+    firstFilter.sortBy = 'Faldende';
+    
+    //Date magic
+    firstFilter.dateFrom = new Date(-8640000000000000);
+    firstFilter.dateTo = new Date(8640000000000000);
+
+    firstFilter.showOnlyVisibleInNetBank = false;
+    firstFilter.showFaultyDocuments = false;
+    
+    this.onFilter(firstFilter);
   }
 
   onSearched(searchResult: BDDocument[]) {
-    this.results = searchResult;
-    this._filteredResults = this.filter.getFilteredDocs(this.results);
+    if (searchResult != null) {
+      this.results = searchResult;
+      this._filteredResults = this.filter.getFilteredDocs(this.results);
+    } else {
+      alert('Ingen resultater fundet.');
+    }
+
   }
 
   onFilter(filter: Filter) {

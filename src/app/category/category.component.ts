@@ -9,13 +9,29 @@ import {Component, OnInit, Input} from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  @Input() category: Category;
+  private _category: Category;
 
+  display = 'none';
+  
   constructor() {
   }
 
   ngOnInit() {
   }
-
   
+  @Input()
+  set category(category: Category) {
+    this._category = category;
+  }
+  get category(): Category {
+    return this._category;
+  }
+
+  onClickHeader() {
+    if(this.display === 'none') {
+      this.display = 'inline';
+    } else {
+      this.display = 'none';
+    }
+  }
 }

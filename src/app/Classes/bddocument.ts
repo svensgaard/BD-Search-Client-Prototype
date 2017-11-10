@@ -32,7 +32,7 @@ export class BDDocument {
   tekst: string;
   tekst_value: string;
   
-  
+  detail = 'Details';
   
   constructor(refnummer: string, id: string, bId: string, udskriftsDato: string, dokType: string, visRaadgiver: string,
   synligNetbank: string, sletDato: string, fejlMarkeret: string, forsendelsesKode: string, n1: string, n1_value: string, n2: string,
@@ -55,8 +55,9 @@ export class BDDocument {
     this.tekst_value = tekst_value;
   }
   
-  get detail(): string {
-    return ''; //TODO
+  get details(): string {
+    console.log();
+    return this.n1 + ' ' + this.n1_value + '\t' + this.n2 + this.n2_value + '\t' + this.tekst + ' ' + this.tekst_value;
   }
   
 }
