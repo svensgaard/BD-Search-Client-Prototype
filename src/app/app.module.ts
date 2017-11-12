@@ -1,6 +1,8 @@
+import { DoktyperService } from './doktyper.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
 
 import { AppComponent } from './app.component';
@@ -25,9 +27,10 @@ import { DocumentService } from './document.service';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    Ng2AutoCompleteModule
   ],
-  providers: [DocumentService],
+  providers: [DocumentService, DoktyperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

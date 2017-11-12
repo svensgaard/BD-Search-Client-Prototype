@@ -1,3 +1,4 @@
+import { BDDokType } from './Classes/BDDokType';
 import {BDDocument} from './Classes/bddocument';
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
@@ -11,12 +12,12 @@ import {Filter} from './Classes/filter';
 })
 export class AppComponent implements OnInit {
   results: BDDocument[];
-  filter: Filter;
-
+  private _filter: Filter;
+  refnummer: string;
   private _filteredResults: Category[];
 
   constructor(private http: HttpClient) {
-    this.filter = new Filter();
+    this._filter = new Filter();
   }
 
   ngOnInit(): void {
@@ -24,15 +25,22 @@ export class AppComponent implements OnInit {
     let firstFilter = new Filter();
     firstFilter.dividedBy = 'Dokument type';
     firstFilter.sortBy = 'Faldende';
-    
-    //Date magic
-    firstFilter.dateFrom = new Date(-8640000000000000);
-    firstFilter.dateTo = new Date(8640000000000000);
 
     firstFilter.showOnlyVisibleInNetBank = false;
     firstFilter.showFaultyDocuments = false;
-    
-    this.onFilter(firstFilter);
+    firstFilter.includeAutoGen = true;
+
+    this.filter = firstFilter;
+  }
+
+  get filter():Filter {
+    return this._filter;
+  }
+  set filter(newFilter: Filter) {
+    this._filter = newFilter;
+    if (this.results != null) {
+      this._filteredResults = this.filter.getFilteredDocs(this.results);
+    }
   }
 
   onSearched(searchResult: BDDocument[]) {
@@ -45,11 +53,8 @@ export class AppComponent implements OnInit {
 
   }
 
-  onFilter(filter: Filter) {
-    this.filter = filter;
-    if (this.results != null) {
-      this._filteredResults = this.filter.getFilteredDocs(this.results);
-    }
+  onDokTypes(dokTypes: BDDokType[]) {
+    this._filter.dokTyper =  dokTypes;
   }
 
   get filteredResults(): Category[] {

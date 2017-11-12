@@ -1,9 +1,10 @@
 <!-- Main Search -->
-<app-search (onSearched)="onSearched($event)"></app-search>
-
+<input type="text" [(ngModel)]="refnummer" />
+<app-search [refnummer]="refnummer" (onSearched)="onSearched($event)" (onDokTypes)="onDokTypes($event)"></app-search>
+{{filter.toString()}}
 <div class="mainPlaceholder">
 	<!-- Filters -->
-	<app-filter (onFilter)="onFilter($event)"></app-filter>
+	<app-filter [(filter)]="filter"></app-filter>
 
 	<!-- output -->
 	<app-documents [categories]="filteredResults" ></app-documents>

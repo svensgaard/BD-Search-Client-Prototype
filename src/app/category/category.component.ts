@@ -12,6 +12,7 @@ export class CategoryComponent implements OnInit {
   private _category: Category;
 
   display = 'none';
+  headerStatusIndicator = '+';
   
   constructor() {
   }
@@ -30,8 +31,10 @@ export class CategoryComponent implements OnInit {
   onClickHeader() {
     if(this.display === 'none') {
       this.display = 'inline';
+      this.headerStatusIndicator = '-';
     } else {
       this.display = 'none';
+      this.headerStatusIndicator = '+';
     }
   }
 }

@@ -1,6 +1,9 @@
 
-<div class="categoryHeader" (click)="onClickHeader()">{{category.name}}
-	({{category.numberOfDocuments}})</div>
+<div class="categoryHeader" (click)="onClickHeader()">
+	<div style="float:left;">{{category.name}}
+		({{category.numberOfDocuments}})</div>
+	<div style="float:right; font-weight:bold;">{{headerStatusIndicator}}</div>
+</div>
 <div class="categoryContent" [style.display]="display">
 	<table>
 		<tr>

@@ -65,10 +65,19 @@ main {
 
 .categoryHeader {
     width: 99%;
+    height: 20px;
     background-color: #012F60;
     color: #fff;
     padding: 0.6%;
     font-weight: bold;
+    border-style: solid;
+    border-width: 2px;
+    border-color: white;
+}
+
+.categoryHeader:hover {
+	background-color: #4ea3fd;
+	cursor: pointer;
 }
 
 .categoryContent {

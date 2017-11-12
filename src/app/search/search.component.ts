@@ -1,7 +1,9 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import { BDDokType } from './../Classes/BDDokType';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import {Category} from '../Classes/category';
 import {BDDocument} from '../Classes/bddocument';
 import {DocumentService} from '../document.service';
+import { DoktyperService } from '../doktyper.service';
 
 @Component({
   selector: 'app-search',
@@ -10,35 +12,59 @@ import {DocumentService} from '../document.service';
 })
 export class SearchComponent implements OnInit {
 
+  @Input() refnummer: string;
   @Output() onSearched = new EventEmitter<BDDocument[]>();
+  @Output() onDokTypes = new EventEmitter<BDDokType[]>();
 
   private _results: BDDocument[];
-
+  private _dokTypes: BDDokType[];
+  
   displayAdvanced = 'none';
   
-  constructor(private documentService: DocumentService) {}
+  searchString: string;
+  sourceArray: string[];
+  dateFrom: Date;
+  dateTo: Date;
+
+  constructor(
+    private documentService: DocumentService,
+    private documentTypeService: DoktyperService
+  ) {}
 
   ngOnInit() {
-    this.search('');
+    this.sourceArray = new Array();
+    this.searchString = '';
+    this.search();
+    //Get dok types
+    this.documentTypeService.getDocumentTypes()
+    .subscribe(types => this.dokTypes = types);
   }
 
-  onKeyEnter(searchTerm: string) {
-    this.search(searchTerm);
-    console.log('searched with: ' + searchTerm);
-  }
-
-  onKeyInput(searchTerm: string) {
-    console.log(searchTerm);
+  onKeyEnter() {
+    this.search();
+    console.log('searched with: ' + this.searchString);
   }
 
   set result(res: BDDocument[]) {
     this._results = res;
+    //Filter date
     this.onSearched.emit(this._results);
   }
 
-  search(searchTerm: string) {
+  set dokTypes(dokTypes: BDDokType[]) {
+    this._dokTypes = dokTypes;
+
+    for(let d of this._dokTypes) {
+      this.sourceArray.push(d.dokType);
+    }
+
+    this.onDokTypes.emit(this._dokTypes);
+  }
+  
+
+  search() {
     //Emit result
-    this.documentService.getDocuments('2057386', searchTerm)
+    this.documentService.getDocuments(this.refnummer, this.searchString)
       .subscribe(docs => this.result = docs);
   }
   
