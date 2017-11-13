@@ -117,15 +117,15 @@ main {
 }
 
 .shortDateColumn {
-    width: 90px;
+    width: 115px;
 }
 
 .longDateColumn {
-    width: 55px;
+    width: 200px;
 }
 
 .docTypeColumn {
-    width: 110px;
+    width: 250px;
 }
 
 
