@@ -1,4 +1,3 @@
-import { BDDocument } from './../Classes/bddocument';
 import {BDDocument} from '../Classes/bddocument';
 import {Category} from '../Classes/category';
 import {Component, OnInit, Input} from '@angular/core';
