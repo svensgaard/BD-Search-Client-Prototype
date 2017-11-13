@@ -10,15 +10,14 @@ export class FilterComponent implements OnInit {
 
   @Output() filterChange = new EventEmitter<Filter>();
   @Input() filter: Filter;
-  
+
   private _selectedDividedBy: string;
 
   constructor() {
-
   }
 
   ngOnInit() {
-    
+
   }
 
   onFilterChanged() {

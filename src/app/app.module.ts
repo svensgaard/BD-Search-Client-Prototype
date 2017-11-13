@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 
-
 import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';

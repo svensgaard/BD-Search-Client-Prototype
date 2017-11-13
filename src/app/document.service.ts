@@ -10,7 +10,8 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class DocumentService {
 
-  private documentsUrl = 'http://localhost:8080/';
+  private documentsUrl = '/server/';
+  //private documentsUrl = '/Webprojects/Bankdata/BD-Search-Client-Prototype/server/';
 
   constructor(
     private http: HttpClient

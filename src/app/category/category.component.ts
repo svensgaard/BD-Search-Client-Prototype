@@ -13,13 +13,13 @@ export class CategoryComponent implements OnInit {
 
   display = 'none';
   headerStatusIndicator = '+';
-  
+
   constructor() {
   }
 
   ngOnInit() {
   }
-  
+
   @Input()
   set category(category: Category) {
     this._category = category;
