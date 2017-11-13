@@ -1,3 +1,4 @@
+import { BDDocument } from './../Classes/bddocument';
 import {BDDocument} from '../Classes/bddocument';
 import {Category} from '../Classes/category';
 import {Component, OnInit, Input} from '@angular/core';
@@ -27,7 +28,11 @@ export class CategoryComponent implements OnInit {
   get category(): Category {
     return this._category;
   }
-
+  buildDetails(document: BDDocument) {
+    return document.n1 + ' ' + document.n1_value + '\t' + document.n2 + document.n2_value + 
+    '\t' + document.tekst + ' ' + document.tekst_value;
+    
+  }
   onClickHeader() {
     if(this.display === 'none') {
       this.display = 'inline';
