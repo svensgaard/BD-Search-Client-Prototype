@@ -1,5 +1,5 @@
 <!-- Main Search -->
-<input type="text" [(ngModel)]="refnummer" />
+<input type="text" [(ngModel)]="refnummer" value="2069550" />
 <app-search [refnummer]="refnummer" (onSearched)="onSearched($event)" (onDokTypes)="onDokTypes($event)"></app-search>
 {{filter.toString()}}
 <div class="mainPlaceholder">
