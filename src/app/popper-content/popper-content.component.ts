@@ -7,25 +7,25 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./popper-content.component.css']
 })
 export class PopperContentComponent implements OnInit {
-  
+
   private _doc: BDDocument;
-  private netBankIconUrl = '/assets/netbank.png';
-  private notNetBankIconUrl = '/assets/not_netbank.png';  
-  private kundeLaestIconUrl = '/assets/read.png';
-  private kundeIkkeLaestIconUrl = '/assets/not_read.png';
-  private letterIconUrl = '/assets/letter.png';
-  private eboksIconUrl = '/assets/eboks.png';
+  netBankIconUrl = '/assets/netbank.png';
+  notNetBankIconUrl = '/assets/not_netbank.png';
+  kundeLaestIconUrl = '/assets/read.png';
+  kundeIkkeLaestIconUrl = '/assets/not_read.png';
+  letterIconUrl = '/assets/letter.png';
+  eboksIconUrl = '/assets/eboks.png';
 
-  private netBankIconDisplay = 'none';
-  private notNetBankIconDisplay = 'none';
-  private kundeLaestIconDisplay = 'none';
-  private kundeIkkeLaestIconDisplay = 'none';
-  private letterIconDisplay = 'none';
-  private eboksIconDisplay = 'none';
-  
-  
+  netBankIconDisplay = 'none';
+  notNetBankIconDisplay = 'none';
+  kundeLaestIconDisplay = 'none';
+  kundeIkkeLaestIconDisplay = 'none';
+  letterIconDisplay = 'none';
+  eboksIconDisplay = 'none';
 
-  
+
+
+
 
   constructor() { }
 
@@ -38,12 +38,12 @@ export class PopperContentComponent implements OnInit {
     //Netbank
     if(this._doc.synligNetbank === 'J') {
       this.netBankIconDisplay = 'inline';
-      this.notNetBankIconDisplay = 'none';     
+      this.notNetBankIconDisplay = 'none';
     } else {
       this.notNetBankIconDisplay = 'inline';
       this.netBankIconDisplay = 'none';
     }
-    
+
   }
 
   get doc(): BDDocument {
