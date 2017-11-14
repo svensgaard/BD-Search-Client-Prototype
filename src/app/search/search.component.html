@@ -16,7 +16,8 @@
               <label for="dateFrom">til</label>
                 <input type="date" [ngModel]="dateTo | date:'yyyy-MM-dd'" (ngModelChange)="dateTo=$event" name="dateTo" />
             </div>-->
-            <button (click)="search()">Søg</button>
+            <button (click)="search()">Søg</button>           
         </form>
     </div>
+    <div class="numOfDocs">{{numOfResults}} resultater</div>
 </header>

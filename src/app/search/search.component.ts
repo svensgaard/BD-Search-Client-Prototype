@@ -12,6 +12,7 @@ import { DoktyperService } from '../doktyper.service';
 })
 export class SearchComponent implements OnInit {
 
+  @Input() numOfResults: number;
   @Input() refnummer: string;
   @Output() onSearched = new EventEmitter<BDDocument[]>();
   @Output() onDokTypes = new EventEmitter<BDDokType[]>();

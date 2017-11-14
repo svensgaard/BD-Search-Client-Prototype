@@ -64,5 +64,16 @@ export class AppComponent implements OnInit {
     return this._filteredResults;
   }
 
+  get numOfResults(): number {
+    if(this._filteredResults !== undefined) {
+      let num = 0;
+      for(let cat of this._filteredResults) {
+        num += cat.documents.length;
+      }     
+      return num;
+    } else {
+      return 0;
+    }
+  }
 
 }
