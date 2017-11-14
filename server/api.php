@@ -1,13 +1,16 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-if(!empty($_GET['id']))
+if(!empty($_GET['id']) && !empty($_GET['dateFrom']) && !empty($_GET['dateTo']))
 {
 	if(!empty($_GET['searchTerm'])) {
 		$searchTerm=$_GET['searchTerm'];
 	}
 	
 	$id=$_GET['id'];
-	$docs = get_docs($id, $searchTerm);
+	$dateFrom = DateTime::createFromFormat('d-m-Y', $_GET['dateFrom']);
+	$dateTo = DateTime::createFromFormat('d-m-Y', $_GET['dateTo']);
+
+	$docs = get_docs($id, $dateFrom, $dateTo, $searchTerm);
 	
 	if(empty($docs))
 	{
@@ -33,18 +36,27 @@ function response($status,$status_message,$data)
 
 }
 
-function get_docs($i, $s)
+function get_docs($i, $dateFrom, $dateTo, $s)
 {
 	$docsToReturn = array();
 	if (($handle = fopen("MSV.csv", "r")) !== FALSE) {
 		while (($data = fgetcsv($handle, 1000, "|")) !== FALSE) {
 			$num = count($data);
 			$utfKonto = utf8ize($data[4]);
+			$docDate = DateTime::createFromFormat('Y-m-d', $data[3]);
+			$docDetails = $data[10].$data[11].$data[12].$data[13].$data[14].$data[15];
+			$docDetails = utf8ize($docDetails);
 			
-			if ($i == $data[0] && empty($s)) {
+
+			
+			if ($i == $data[0] && empty($s) && $docDate >= $dateFrom && $docDate <= $dateTo) {
 				$docsToReturn = addDocument($docsToReturn, $data);
-			} else if($i == $data[0] && strpos(strtolower($utfKonto), strtolower($s)) !== false) {
-				$docsToReturn = addDocument($docsToReturn, $data);
+				
+			} else if($i == $data[0] && $docDate >= $dateFrom && $docDate <= $dateTo) {
+				if(strpos(strtolower($docDetails), strtolower($s)) !== false || strpos(strtolower($utfKonto), strtolower($s)) !== false) {
+					$docsToReturn = addDocument($docsToReturn, $data);		
+				}
+				
 			}
 
 

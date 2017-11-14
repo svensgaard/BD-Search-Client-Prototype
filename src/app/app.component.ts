@@ -49,6 +49,7 @@ export class AppComponent implements OnInit {
     if (searchResult != null) {
       this.results = searchResult;
       this._filteredResults = this.filter.getFilteredDocs(this.results);
+      this.displayError = 'none';
     } else {
       this.displayError = 'inline';
       this.results = null;
