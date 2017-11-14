@@ -1,13 +1,14 @@
 /* -----------------------  Medarbejderportal styles ---------------------- */
 .topBar {
-  height: 51px;
+  height: 50px;
   width: 100%;
   background-color: #012F60;
+  overflow: hidden;
 }
 
 .topBar .leftTopBar {
   float: left;
-  height: 51px;
+  height: 50px;
 }
 
 .topBar .rightTopBar {
@@ -22,6 +23,7 @@
 .leftMenu {
   float:left;
   width: 248px;
+  margin-top: 1px;
 }
 
 .prototypeWindow {
