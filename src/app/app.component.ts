@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this._filter = new Filter();
+    this._filteredResults = null;
   }
 
   ngOnInit(): void {
@@ -65,7 +66,7 @@ export class AppComponent implements OnInit {
   }
 
   get numOfResults(): number {
-    if(this._filteredResults !== undefined) {
+    if(this._filteredResults !== undefined && this._filteredResults !== null) {
       let num = 0;
       for(let cat of this._filteredResults) {
         num += cat.documents.length;
