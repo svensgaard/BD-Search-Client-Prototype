@@ -17,8 +17,12 @@ export class DocumentService {
     private http: HttpClient
   ) {}
 
-  getDocuments(id: string, searchTerm: string): Observable<BDDocument[]> {
-    let realUrl = this.documentsUrl + 'api.php?id='+ id + '&searchTerm=' + encodeURIComponent(searchTerm);
+  getDocuments(id: string, searchTerm: string, dateFrom:Date, dateTo:Date): Observable<BDDocument[]> {
+    
+    let realUrl = this.documentsUrl + 'api.php?id='+ id + 
+    '&dateFrom=' + dateFrom.getDate()+ '-' + (dateFrom.getMonth()+1) + '-' + dateFrom.getFullYear() +
+    '&dateTo=' + dateTo.getDate()+ '-' + (dateTo.getMonth()+1) + '-' + dateTo.getFullYear() +
+    '&searchTerm=' + encodeURIComponent(searchTerm);
     //realUrl = encodeURI(realUrl);
     console.log(realUrl);
     return this.http.get<BDDocument[]>(realUrl);

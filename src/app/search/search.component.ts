@@ -35,6 +35,12 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.sourceArray = new Array();
     this.searchString = '';
+
+    let oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    this.dateFrom = oneYearAgo;
+    this.dateTo = new Date();
+    
     this.search();
     //Get dok types
     this.documentTypeService.getDocumentTypes()
@@ -65,7 +71,7 @@ export class SearchComponent implements OnInit {
 
   search() {
     //Emit result
-    this.documentService.getDocuments(this.refnummer, this.searchString)
+    this.documentService.getDocuments(this.refnummer, this.searchString, this.dateFrom, this.dateTo)
       .subscribe(docs => this.result = docs);
   }
   
