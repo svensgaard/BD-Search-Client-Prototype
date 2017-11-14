@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
+import {NgxPopperModule} from 'ngx-popper';
 
 import { AppComponent } from './app.component';
 
@@ -13,6 +14,7 @@ import { FilterComponent } from './filter/filter.component';
 import { SearchComponent } from './search/search.component';
 import { CategoryComponent } from './category/category.component';
 import { DocumentService } from './document.service';
+import { PopperContentComponent } from './popper-content/popper-content.component';
 
 
 @NgModule({
@@ -21,13 +23,15 @@ import { DocumentService } from './document.service';
     DocumentsComponent,
     FilterComponent,
     SearchComponent,
-    CategoryComponent
+    CategoryComponent,
+    PopperContentComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    Ng2AutoCompleteModule
+    Ng2AutoCompleteModule,
+    NgxPopperModule
   ],
   providers: [DocumentService, DoktyperService],
   bootstrap: [AppComponent]

@@ -136,10 +136,10 @@ main {
   display:none;
   position: absolute;
   border-radius: 3px;
-  border: 0px solid #FFC107;
+  border: 0px solid #012F60;
   box-shadow: 0 0 2px rgba(0,0,0,0.5);
   padding: 10px;
-  background-color: #FFC107;
+  background-color: #012F60;
   color: #fff;
 }
 .ngxp__container.ngxp__animation {
@@ -156,7 +156,6 @@ main {
   position: absolute;
   margin: 5px;
 
-  background-color: #FFC107;
 }
 
 .ngxp__container[x-placement^="top"],

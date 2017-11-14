@@ -10,13 +10,13 @@
                 <input type="text" class="searchInput" placeholder="Vedr. tekst">
             </div>-->
 
-            <div class="datesPickerContainer">
-              <!--<label for="dateFrom">Fra</label>-->
+            <!--<div class="datesPickerContainer">
+              <label for="dateFrom">Fra</label>
                 <input type="date" [ngModel]="dateFrom | date:'yyyy-MM-dd'" (ngModelChange)="dateFrom=$event" name="dateFrom" />
               <label for="dateFrom">til</label>
                 <input type="date" [ngModel]="dateTo | date:'yyyy-MM-dd'" (ngModelChange)="dateTo=$event" name="dateTo" />
-            </div>
-
+            </div>-->
+            <button (click)="search()">Søg</button>
         </form>
     </div>
 </header>

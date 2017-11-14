@@ -13,8 +13,9 @@ import {Filter} from './Classes/filter';
 export class AppComponent implements OnInit {
   results: BDDocument[];
   private _filter: Filter;
-  refnummer: string;
+  refnummer= '2057632';
   private _filteredResults: Category[];
+  displayError= 'none';
 
   constructor(private http: HttpClient) {
     this._filter = new Filter();
@@ -48,7 +49,9 @@ export class AppComponent implements OnInit {
       this.results = searchResult;
       this._filteredResults = this.filter.getFilteredDocs(this.results);
     } else {
-      alert('Ingen resultater fundet.');
+      this.displayError = 'inline';
+      this.results = null;
+      this._filteredResults = null;
     }
 
   }

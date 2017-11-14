@@ -11,8 +11,8 @@ export class CategoryComponent implements OnInit {
 
   private _category: Category;
 
-  display = 'none';
-  headerStatusIndicator = '+';
+  display = 'inline';
+  headerStatusIndicator = '-';
 
   constructor() {
   }
@@ -27,9 +27,15 @@ export class CategoryComponent implements OnInit {
   get category(): Category {
     return this._category;
   }
+
   buildDetails(document: BDDocument) {
-    return document.n1 + ' ' + document.n1_value + '\t' + document.n2 + document.n2_value + 
-    '\t' + document.tekst + ' ' + document.tekst_value;
+    let returnstring='';
+
+    if(document.n1 !== '?') {returnstring+= document.n1 + ': ' + document.n1_value + '\t'; }
+    if(document.n2 !== '?') {returnstring+= document.n2 + ': ' + document.n2_value + '\t'; }
+    if(document.tekst !== '?') {returnstring+= document.tekst + ': ' + document.tekst_value;}
+    
+    return  returnstring;
     
   }
   onClickHeader() {

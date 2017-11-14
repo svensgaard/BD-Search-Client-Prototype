@@ -1,11 +1,11 @@
 <!-- Main Search -->
 <input type="text" [(ngModel)]="refnummer" value="2069550" />
 <app-search [refnummer]="refnummer" (onSearched)="onSearched($event)" (onDokTypes)="onDokTypes($event)"></app-search>
-{{filter.toString()}}
 <div class="mainPlaceholder">
 	<!-- Filters -->
 	<app-filter [(filter)]="filter"></app-filter>
-
+	{{filter.toString()}}
 	<!-- output -->
-	<app-documents [categories]="filteredResults" ></app-documents>
+	<app-documents [categories]="filteredResults"></app-documents>
+	<div [style.display]="displayError" style="color:RED;font-weight:bold;font-size:35px">INGEN DOKUMENTER FUNDET</div>
 </div>
