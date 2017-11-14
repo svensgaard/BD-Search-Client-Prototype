@@ -1,3 +1,45 @@
+/* -----------------------  Medarbejderportal styles ---------------------- */
+.topBar {
+  height: 51px;
+  width: 100%;
+  background-color: #012F60;
+}
+
+.topBar .leftTopBar {
+  float: left;
+  height: 51px;
+}
+
+.topBar .rightTopBar {
+  float: right;
+}
+
+.mainWindow {
+  width: 100%;
+  float: left;
+}
+
+.leftMenu {
+  float:left;
+  width: 248px;
+}
+
+.prototypeWindow {
+  overflow: auto;
+  margin: 10px 20px 0 20px;
+  background-color: #ffffff;
+  border: 2px solid #ECECEC;
+}
+
+.portletHeader {
+  padding: 12px;
+  border-bottom: 1px dotted #ECECEC;
+  font-family: Arial, sans-serif;
+  color: #917E7E;
+  font-size: large;
+}
+
+
 /* -----------------------  General styles ---------------------- */
 
 html, body {
@@ -5,6 +47,10 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+}
+
+body {
+  background-color: #EDF2F6;
 }
 
 .categoryContent tr {
