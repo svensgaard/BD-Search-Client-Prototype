@@ -3,10 +3,10 @@
         <input auto-complete type="text" class="searchInput" [(ngModel)]="searchString" [source]="sourceArray"
         placeholder="Dokumenttype" name="searchInput" no-match-found-text="Dokumenttype ikke fundet" />
 
-        <input type="date" [ngModel]="dateFrom | date:'yyyy-MM-dd'" (ngModelChange)="dateFrom=$event" name="dateFrom" />
+        <input type="date" [value]="dateFrom | date:'yyyy-MM-dd'" (input)="dateFrom=$event.target.valueAsDate" name="dateFrom" />
 
         <label for="dateFrom">til </label>
-        <input type="date" [ngModel]="dateTo | date:'yyyy-MM-dd'" (ngModelChange)="dateTo=$event" name="dateTo" />
+        <input type="date" [value]="dateTo | date:'yyyy-MM-dd'" (input)="dateTo=$event.target.valueAsDate" name="dateTo" />
 
         <button class="flat-button" type="submit" (click)="search()">Søg</button>
     </form>

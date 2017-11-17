@@ -25,8 +25,15 @@ export class SearchComponent implements OnInit {
 
   searchString: string;
   sourceArray: string[];
-  dateFrom: Date;
-  dateTo: Date;
+
+  dateFrom = this.oneYearAgo;
+  dateTo = new Date();
+
+  get oneYearAgo(): Date {
+    let oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+    return oneYearAgo;
+  }
 
   //Filter Dropdown
   dropdownList = [];
@@ -58,17 +65,13 @@ export class SearchComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       classes: 'myclass custom-class'
     };
-
+    console.log(this.dateFrom);
+    console.log(this.dateTo);
   }
 
   ngOnInit() {
     this.sourceArray = new Array();
     this.searchString = '';
-
-    let oneYearAgo = new Date();
-    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
-    this.dateFrom = oneYearAgo;
-    this.dateTo = new Date();
 
     this.search();
     //Get dok types
