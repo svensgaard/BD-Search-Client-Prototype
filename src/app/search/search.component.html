@@ -1,23 +1,16 @@
 <header>
-    <div class="headerPlaceholder">
-        <form class="searchForm">
-            <input auto-complete type="text" class="searchInput" [(ngModel)]="searchString" [source]="sourceArray"
-            (keyup.enter)="onKeyEnter()" placeholder="Dokumenttype" name="searchInput" no-match-found-text="Dokumenttype ikke fundet"
-            blank-option-text="alle" (valueChanged)="search()"/>
+    <form class="searchForm">
+        <input auto-complete type="text" class="searchInput" [(ngModel)]="searchString" [source]="sourceArray"
+        (keyup.enter)="onKeyEnter()" placeholder="Dokumenttype" name="searchInput" no-match-found-text="Dokumenttype ikke fundet"
+        blank-option-text="alle" (valueChanged)="search()"/>
 
-            <!--<button (click)="toogleAdvanced()" type="button" class="advancedLink">Avanceret</button>
-            <div [style.display]="displayAdvanced" class="advanced">
-                <input type="text" class="searchInput" placeholder="Vedr. tekst">
-            </div>-->
+        <input type="date" [ngModel]="dateFrom | date:'yyyy-MM-dd'" (ngModelChange)="dateFrom=$event" name="dateFrom" />
 
-            <!--<div class="datesPickerContainer">
-              <label for="dateFrom">Fra</label>
-                <input type="date" [ngModel]="dateFrom | date:'yyyy-MM-dd'" (ngModelChange)="dateFrom=$event" name="dateFrom" />
-              <label for="dateFrom">til</label>
-                <input type="date" [ngModel]="dateTo | date:'yyyy-MM-dd'" (ngModelChange)="dateTo=$event" name="dateTo" />
-            </div>-->
-            <button (click)="search()">Søg</button>           
-        </form>
-    </div>
+        <label for="dateFrom">til </label>
+        <input type="date" [ngModel]="dateTo | date:'yyyy-MM-dd'" (ngModelChange)="dateTo=$event" name="dateTo" />
+
+        <button class="flat-button" (click)="search()">Søg</button>
+    </form>
+
     <div class="numOfDocs">{{numOfResults}} resultater</div>
 </header>

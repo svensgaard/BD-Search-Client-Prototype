@@ -1,13 +1,38 @@
-.datesPickerContainer {
-  margin-top: 5px;
+header {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #012F60;
 }
+
+.ng2-auto-complete-wrapper {
+  display: inline;
+}
+
+.searchInput {
+  width: 400px;
+  height: 18px;
+}
+
+.searchForm {
+  text-align: left;
+  padding: 20px;
+}
+
+.searchForm input[type="date"] {
+  margin-left: 5px;
+}
+
+.searchForm button {
+  height: 24px;
+  width: 43px;
+  margin-left: 5px;
+}
+
 .numOfDocs {
   position: absolute;
   right: 5px;
   bottom: 5px;
   font-weight: bold;
   font-size: 25px;
-}
-header {
-  position: relative;
 }
