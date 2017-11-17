@@ -11,7 +11,7 @@ export class CategoryComponent implements OnInit {
 
   private _category: Category;
 
-  display = 'inline';
+  display = 'none';
   headerStatusIndicator = '-';
 
   constructor() {

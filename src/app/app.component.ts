@@ -36,7 +36,7 @@ export class AppComponent implements OnInit {
       firstFilter.sortBy = 'Faldende';
 
       firstFilter.showOnlyVisibleInNetBank = false;
-      firstFilter.showFaultyDocuments = false;
+      firstFilter.showFaultyDocuments = true;
       firstFilter.includeAutoGen = true;
 
       this.filter = firstFilter;

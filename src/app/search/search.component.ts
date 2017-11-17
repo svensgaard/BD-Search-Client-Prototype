@@ -1,3 +1,4 @@
+import { Filter } from './../Classes/filter';
 import { BDDokType } from './../Classes/BDDokType';
 import {Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation} from '@angular/core';
 import {Category} from '../Classes/category';
@@ -17,6 +18,8 @@ export class SearchComponent implements OnInit {
   @Input() refnummer: string;
   @Output() onSearched = new EventEmitter<BDDocument[]>();
   @Output() onDokTypes = new EventEmitter<BDDokType[]>();
+  @Output() filterChange = new EventEmitter<Filter>();
+  @Input() filter: Filter;
 
   private _results: BDDocument[];
   private _dokTypes: BDDokType[];
@@ -45,19 +48,19 @@ export class SearchComponent implements OnInit {
     private documentTypeService: DoktyperService
   ) {
     this.dropdownList = [
-      { "id": 1, "itemName": "India" },
-      { "id": 2, "itemName": "Singapore" },
-      { "id": 3, "itemName": "Australia" },
-      { "id": 4, "itemName": "Canada" },
-      { "id": 5, "itemName": "South Korea" },
-      { "id": 6, "itemName": "Brazil" }
+      { 'id': 1, 'itemName': 'India' },
+      { 'id': 2, 'itemName': 'Singapore' },
+      { 'id': 3, 'itemName': 'Australia' },
+      { 'id': 4, 'itemName': 'Canada' },
+      { 'id': 5, 'itemName': 'South Korea' },
+      { 'id': 6, 'itemName': 'Brazil' }
     ];
 
     this.selectedItems = [
-      { "id": 1, "itemName": "India" },
-      { "id": 2, "itemName": "Singapore" },
-      { "id": 3, "itemName": "Australia" },
-      { "id": 4, "itemName": "Canada" }];
+      { 'id': 1, 'itemName': 'India' },
+      { 'id': 2, 'itemName': 'Singapore' },
+      { 'id': 3, 'itemName': 'Australia' },
+      { 'id': 4, 'itemName': 'Canada' }];
 
     this.dropdownSettings = {
       text: 'Select Countries',
@@ -65,8 +68,6 @@ export class SearchComponent implements OnInit {
       unSelectAllText: 'UnSelect All',
       classes: 'myclass custom-class'
     };
-    console.log(this.dateFrom);
-    console.log(this.dateTo);
   }
 
   ngOnInit() {
