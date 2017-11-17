@@ -2,7 +2,7 @@
     <div class="headerPlaceholder">
         <form class="searchForm">
             <input auto-complete type="text" class="searchInput" [(ngModel)]="searchString" [source]="sourceArray"
-            (keyup.enter)="onKeyEnter()" placeholder="Dokumenttype" name="searchInput" no-match-found-text="Dokumenttype ikke fundet"
+             placeholder="Dokumenttype" name="searchInput" no-match-found-text="Dokumenttype ikke fundet"
             blank-option-text="alle" (valueChanged)="search()"/>
 
             <!--<button (click)="toogleAdvanced()" type="button" class="advancedLink">Avanceret</button>
@@ -16,7 +16,7 @@
               <label for="dateFrom">til</label>
                 <input type="date" [ngModel]="dateTo | date:'yyyy-MM-dd'" (ngModelChange)="dateTo=$event" name="dateTo" />
             </div>-->
-            <button (click)="search()">Søg</button>           
+            <button type="submit" (click)="search()">Søg</button>           
         </form>
     </div>
     <div class="numOfDocs">{{numOfResults}} resultater</div>
