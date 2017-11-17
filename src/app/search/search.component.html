@@ -12,5 +12,10 @@
         <button class="flat-button" (click)="search()">Søg</button>
     </form>
 
+    <ng-select
+      [options]="myOptions"
+      multiple="true">
+    </ng-select>
+
     <div class="numOfDocs">{{numOfResults}} resultater</div>
 </header>

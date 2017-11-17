@@ -4,6 +4,7 @@ import {Category} from '../Classes/category';
 import {BDDocument} from '../Classes/bddocument';
 import {DocumentService} from '../document.service';
 import { DoktyperService } from '../doktyper.service';
+import {IOption} from 'ng-select';
 
 @Component({
   selector: 'app-search',
@@ -22,6 +23,12 @@ export class SearchComponent implements OnInit {
   private _dokTypes: BDDokType[];
 
   displayAdvanced = 'none';
+
+  myOptions: Array<IOption> = [
+    {label: 'Belgium', value: 'BE'},
+    {label: 'Luxembourg', value: 'LU'},
+    {label: 'Netherlands', value: 'NL'}
+  ];
 
   searchString: string;
   sourceArray: string[];
