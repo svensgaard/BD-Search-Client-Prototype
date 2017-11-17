@@ -1,5 +1,5 @@
 import { BDDokType } from './../Classes/BDDokType';
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation} from '@angular/core';
 import {Category} from '../Classes/category';
 import {BDDocument} from '../Classes/bddocument';
 import {DocumentService} from '../document.service';
@@ -8,7 +8,8 @@ import { DoktyperService } from '../doktyper.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class SearchComponent implements OnInit {
 
@@ -19,9 +20,9 @@ export class SearchComponent implements OnInit {
 
   private _results: BDDocument[];
   private _dokTypes: BDDokType[];
-  
+
   displayAdvanced = 'none';
-  
+
   searchString: string;
   sourceArray: string[];
   dateFrom: Date;
@@ -40,7 +41,7 @@ export class SearchComponent implements OnInit {
     oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
     this.dateFrom = oneYearAgo;
     this.dateTo = new Date();
-    
+
     this.search();
     //Get dok types
     this.documentTypeService.getDocumentTypes()
@@ -67,14 +68,14 @@ export class SearchComponent implements OnInit {
 
     this.onDokTypes.emit(this._dokTypes);
   }
-  
+
 
   search() {
     //Emit result
     this.documentService.getDocuments(this.refnummer, this.searchString, this.dateFrom, this.dateTo)
       .subscribe(docs => this.result = docs);
   }
-  
+
   toogleAdvanced() {
     if(this.displayAdvanced === 'none') {
       this.displayAdvanced = 'inline';

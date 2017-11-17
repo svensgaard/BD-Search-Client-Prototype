@@ -41,6 +41,20 @@
   font-size: large;
 }
 
+.flat-button {
+  background-color: #f6f6f6;
+  border: 1px solid #cccccc;
+  color: #2f2f2f;
+  transition: all 0.15s ease-out;
+}
+
+.flat-button:hover, .flat-button:focus {
+  text-decoration: none;
+  background-color: #0061a0;
+  border-color: #0061a0;
+  color: #ffffff;
+}
+
 
 /* -----------------------  General styles ---------------------- */
 
@@ -53,6 +67,7 @@ html, body {
 
 body {
   background-color: #EDF2F6;
+  font-family: Verdana, sans-serif;
 }
 
 .categoryContent tr {
@@ -64,32 +79,7 @@ body {
 }
 
 /* -----------------------  Header styles ---------------------- */
-header {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #012F60;
-}
 
-.headerPlaceholder {
-    width: 600px;
-    margin: 10px auto;
-}
-
-.searchInput {
-    width: 400px;
-}
-
-.searchForm {
-    text-align: left;
-}
-
-.advancedLink {
-    display: block;
-}
-
-.advanced {
-    display: none;
-}
 
 /* -----------------------  Aside styles ---------------------- */
 

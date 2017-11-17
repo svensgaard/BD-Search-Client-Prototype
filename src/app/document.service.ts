@@ -10,16 +10,17 @@ import 'rxjs/add/operator/do';
 @Injectable()
 export class DocumentService {
 
-  private documentsUrl = '/server/';
-  //private documentsUrl = '/Webprojects/Bankdata/BD-Search-Client-Prototype/server/';
+  //private documentsUrl = '/server/';
+  private documentsUrl = 'http://localhost/Webprojects/Bankdata/BD-Search-Client-Prototype/server/';
   //private documentsUrl = 'http://localhost:8080/';
+
   constructor(
     private http: HttpClient
   ) {}
 
   getDocuments(id: string, searchTerm: string, dateFrom:Date, dateTo:Date): Observable<BDDocument[]> {
-    
-    let realUrl = this.documentsUrl + 'api.php?id='+ id + 
+
+    let realUrl = this.documentsUrl + 'api.php?id='+ id +
     '&dateFrom=' + dateFrom.getDate()+ '-' + (dateFrom.getMonth()+1) + '-' + dateFrom.getFullYear() +
     '&dateTo=' + dateTo.getDate()+ '-' + (dateTo.getMonth()+1) + '-' + dateTo.getFullYear() +
     '&searchTerm=' + encodeURIComponent(searchTerm);
