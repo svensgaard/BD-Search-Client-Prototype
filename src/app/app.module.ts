@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import {NgxPopperModule} from 'ngx-popper';
-import {SelectModule} from 'ng-select';
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
 
 import { AppComponent } from './app.component';
 
@@ -36,7 +36,7 @@ import { AppRoutingModule } from './/app-routing.module';
     Ng2AutoCompleteModule,
     NgxPopperModule,
     AppRoutingModule,
-    SelectModule
+    AngularMultiSelectModule
   ],
   providers: [DocumentService, DoktyperService],
   bootstrap: [RootComponent]

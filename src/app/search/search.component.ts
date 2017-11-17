@@ -4,7 +4,6 @@ import {Category} from '../Classes/category';
 import {BDDocument} from '../Classes/bddocument';
 import {DocumentService} from '../document.service';
 import { DoktyperService } from '../doktyper.service';
-import {IOption} from 'ng-select';
 
 @Component({
   selector: 'app-search',
@@ -24,21 +23,43 @@ export class SearchComponent implements OnInit {
 
   displayAdvanced = 'none';
 
-  myOptions: Array<IOption> = [
-    {label: 'Belgium', value: 'BE'},
-    {label: 'Luxembourg', value: 'LU'},
-    {label: 'Netherlands', value: 'NL'}
-  ];
-
   searchString: string;
   sourceArray: string[];
   dateFrom: Date;
   dateTo: Date;
 
+  //Filter Dropdown
+  dropdownList = [];
+  selectedItems = [];
+  dropdownSettings = {};
+
   constructor(
     private documentService: DocumentService,
     private documentTypeService: DoktyperService
-  ) {}
+  ) {
+    this.dropdownList = [
+      { "id": 1, "itemName": "India" },
+      { "id": 2, "itemName": "Singapore" },
+      { "id": 3, "itemName": "Australia" },
+      { "id": 4, "itemName": "Canada" },
+      { "id": 5, "itemName": "South Korea" },
+      { "id": 6, "itemName": "Brazil" }
+    ];
+
+    this.selectedItems = [
+      { "id": 1, "itemName": "India" },
+      { "id": 2, "itemName": "Singapore" },
+      { "id": 3, "itemName": "Australia" },
+      { "id": 4, "itemName": "Canada" }];
+
+    this.dropdownSettings = {
+      text: 'Select Countries',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      classes: 'myclass custom-class'
+    };
+
+  }
 
   ngOnInit() {
     this.sourceArray = new Array();
@@ -91,4 +112,20 @@ export class SearchComponent implements OnInit {
     }
   }
 
+
+  //Filter methods
+  onItemSelect(item: any) {
+    console.log(item);
+    console.log(this.selectedItems);
+  }
+  OnItemDeSelect(item: any) {
+    console.log(item);
+    console.log(this.selectedItems);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
+  onDeSelectAll(items: any) {
+    console.log(items);
+  }
 }
