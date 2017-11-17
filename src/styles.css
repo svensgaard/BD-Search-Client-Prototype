@@ -53,6 +53,7 @@ html, body {
 
 body {
   background-color: #EDF2F6;
+  font-family: Arial, sans-serif;
 }
 
 .categoryContent tr {
@@ -64,32 +65,7 @@ body {
 }
 
 /* -----------------------  Header styles ---------------------- */
-header {
-    width: 100%;
-    text-align: center;
-    border-bottom: 1px solid #012F60;
-}
 
-.headerPlaceholder {
-    width: 600px;
-    margin: 10px auto;
-}
-
-.searchInput {
-    width: 400px;
-}
-
-.searchForm {
-    text-align: left;
-}
-
-.advancedLink {
-    display: block;
-}
-
-.advanced {
-    display: none;
-}
 
 /* -----------------------  Aside styles ---------------------- */
 
