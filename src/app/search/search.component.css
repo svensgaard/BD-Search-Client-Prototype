@@ -1,8 +1,7 @@
 header {
-  position: relative;
   width: 100%;
-  text-align: center;
   border-bottom: 1px solid #012F60;
+  display: inline-block;
 }
 
 .ng2-auto-complete-wrapper {
@@ -35,4 +34,30 @@ header {
   bottom: 5px;
   font-weight: bold;
   font-size: 25px;
+}
+
+.filterSelect {
+  width: 300px;
+  display: block;
+  float: left;
+}
+
+.orderSelect {
+  display: block;
+  float: right;
+  margin-right: 15px;
+}
+
+.actions {
+  float: left;
+  margin: 10px;
+}
+
+.filters {
+  float: right;
+  width: 550px;
+}
+
+.clear {
+  clear: both;
 }

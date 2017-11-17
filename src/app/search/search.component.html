@@ -9,14 +9,35 @@
         <input type="date" [value]="dateTo | date:'yyyy-MM-dd'" (input)="dateTo=$event.target.valueAsDate" name="dateTo" />
 
         <button class="flat-button" type="submit" (click)="search()">Søg</button>
+
+        <span *ngIf="numOfResults > 0">{{numOfResults}} resultater</span>
     </form>
 
-    <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems"
-        [settings]="dropdownSettings"
-        (onSelect)="onItemSelect($event)"
-        (onDeSelect)="OnItemDeSelect($event)"
-        (onSelectAll)="onSelectAll($event)"
-        (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+    <div class="actions">
+      <select>
+        <option>Vælg Handling</option>
+        <option>Tilknyt til Opgave</option>
+        <option>Download Fil(er)</option>
+        <option>Print Fil(er)</option>
+        <option>Fejlmarkér Fil(er)</option>
+      </select>
+    </div>
 
-    <div class="numOfDocs">{{numOfResults}} resultater</div>
+    <div class="filters">
+      <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems"
+                          [settings]="dropdownSettings"
+                          (onSelect)="onItemSelect($event)"
+                          (onDeSelect)="OnItemDeSelect($event)"
+                          (onSelectAll)="onSelectAll($event)"
+                          (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+
+      <select class="orderSelect">
+        <option>Dokumenttype (nyeste først)</option>
+        <option>Dokumenttype (ældste først)</option>
+        <option>Måned (nyeste først)</option>
+        <option>Måned (ældste først)</option>
+      </select>
+    </div>
+    <!--<div class="numOfDocs">{{numOfResults}} resultater</div>-->
+  <span class="clear"></span>
 </header>
