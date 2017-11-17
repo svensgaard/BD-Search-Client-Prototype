@@ -38,25 +38,21 @@ export class SearchComponent implements OnInit {
     private documentTypeService: DoktyperService
   ) {
     this.dropdownList = [
-      { "id": 1, "itemName": "India" },
-      { "id": 2, "itemName": "Singapore" },
-      { "id": 3, "itemName": "Australia" },
-      { "id": 4, "itemName": "Canada" },
-      { "id": 5, "itemName": "South Korea" },
-      { "id": 6, "itemName": "Brazil" }
+      { "id": 1, "itemName": "Kun synlige i Netbank" },
+      { "id": 2, "itemName": "Medtag fejlbehæftede" },
+      { "id": 3, "itemName": "Medtag autogenererede" }
     ];
 
     this.selectedItems = [
-      { "id": 1, "itemName": "India" },
-      { "id": 2, "itemName": "Singapore" },
-      { "id": 3, "itemName": "Australia" },
-      { "id": 4, "itemName": "Canada" }];
+      { "id": 3, "itemName": "Medtag autogenererede" }
+    ];
 
     this.dropdownSettings = {
-      text: 'Select Countries',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
-      classes: 'myclass custom-class'
+      text: 'Vælg filtre',
+      selectAllText: 'Vælg Alle',
+      unSelectAllText: 'Fravælg Alle',
+      classes: 'filterSelect custom-class',
+      badgeShowLimit: 1
     };
 
   }
