@@ -1,3 +1,4 @@
+import { RootComponent } from './real.root.component';
 import { DoktyperService } from './doktyper.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -9,13 +10,13 @@ import {SelectModule} from 'ng-select';
 import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
-
 import { DocumentsComponent } from './documents/documents.component';
 import { FilterComponent } from './filter/filter.component';
 import { SearchComponent } from './search/search.component';
 import { CategoryComponent } from './category/category.component';
 import { DocumentService } from './document.service';
 import { PopperContentComponent } from './popper-content/popper-content.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PopperContentComponent } from './popper-content/popper-content.componen
     FilterComponent,
     SearchComponent,
     CategoryComponent,
-    PopperContentComponent
+    PopperContentComponent,
+    RootComponent
   ],
   imports: [
     BrowserModule,
@@ -33,9 +35,10 @@ import { PopperContentComponent } from './popper-content/popper-content.componen
     FormsModule,
     Ng2AutoCompleteModule,
     NgxPopperModule,
+    AppRoutingModule,
     SelectModule
   ],
   providers: [DocumentService, DoktyperService],
-  bootstrap: [AppComponent]
+  bootstrap: [RootComponent]
 })
 export class AppModule { }

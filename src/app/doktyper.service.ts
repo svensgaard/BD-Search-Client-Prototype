@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class DoktyperService {
 
-  //private documentsUrl = '/server/';
   private documentsUrl = 'http://localhost/Webprojects/Bankdata/BD-Search-Client-Prototype/server/';
+  //private documentsUrl = '/server/';
   //private documentsUrl= 'http://localhost:8080/';
 
     constructor(
