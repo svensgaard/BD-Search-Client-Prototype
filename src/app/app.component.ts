@@ -32,16 +32,7 @@ export class AppComponent implements OnInit {
 
       //First filter is everything and on dok type
       let firstFilter = new Filter();
-      firstFilter.dividedBy = 'Dokument type';
-      firstFilter.sortBy = 'Faldende';
-
-      firstFilter.showOnlyVisibleInNetBank = false;
-      firstFilter.showFaultyDocuments = true;
-      firstFilter.includeAutoGen = true;
-
       this.filter = firstFilter;
-
-
     });
 
   }
@@ -51,6 +42,7 @@ export class AppComponent implements OnInit {
   }
   set filter(newFilter: Filter) {
     this._filter = newFilter;
+    console.log('I know...');
     if (this.results != null) {
       this._filteredResults = this.filter.getFilteredDocs(this.results);
     }

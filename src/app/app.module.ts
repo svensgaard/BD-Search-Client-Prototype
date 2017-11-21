@@ -18,7 +18,7 @@ import { CategoryComponent } from './category/category.component';
 import { DocumentService } from './document.service';
 import { PopperContentComponent } from './popper-content/popper-content.component';
 import { AppRoutingModule } from './/app-routing.module';
-import {ToastModule} from "ng2-toastr";
+import {ToastModule} from 'ng2-toastr';
 
 
 

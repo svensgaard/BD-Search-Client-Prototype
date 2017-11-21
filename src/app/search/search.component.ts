@@ -1,9 +1,9 @@
 import { Filter } from './../Classes/filter';
 import { BDDokType } from './../Classes/BDDokType';
-import {Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation, ViewContainerRef} from '@angular/core';
-import {Category} from '../Classes/category';
-import {BDDocument} from '../Classes/bddocument';
-import {DocumentService} from '../document.service';
+import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation, ViewContainerRef } from '@angular/core';
+import { Category } from '../Classes/category';
+import { BDDocument } from '../Classes/bddocument';
+import { DocumentService } from '../document.service';
 import { DoktyperService } from '../doktyper.service';
 import { ToastsManager } from 'ng2-toastr';
 
@@ -41,11 +41,6 @@ export class SearchComponent implements OnInit {
     return oneYearAgo;
   }
 
-  //Filter Dropdown
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
-
   constructor(
     private documentService: DocumentService,
     private documentTypeService: DoktyperService,
@@ -54,24 +49,6 @@ export class SearchComponent implements OnInit {
   ) {
 
     this.toastr.setRootViewContainerRef(vcr);
-
-    this.dropdownList = [
-      { 'id': 1, 'itemName': 'Kun synlige i Netbank' },
-      { 'id': 2, 'itemName': 'Medtag fejlbehæftede' },
-      { 'id': 3, 'itemName': 'Medtag autogenererede' }
-    ];
-
-    this.selectedItems = [
-      { 'id': 3, 'itemName': 'Medtag autogenererede' }
-    ];
-
-    this.dropdownSettings = {
-      text: 'Vælg filtre',
-      selectAllText: 'Vælg Alle',
-      unSelectAllText: 'Fravælg Alle',
-      classes: 'filterSelect custom-class',
-      badgeShowLimit: 1
-    };
   }
 
   ngOnInit() {
@@ -81,7 +58,7 @@ export class SearchComponent implements OnInit {
     this.search();
     //Get dok types
     this.documentTypeService.getDocumentTypes()
-    .subscribe(types => this.dokTypes = types);
+      .subscribe(types => this.dokTypes = types);
   }
 
   onKeyEnter() {
@@ -98,7 +75,7 @@ export class SearchComponent implements OnInit {
   set dokTypes(dokTypes: BDDokType[]) {
     this._dokTypes = dokTypes;
 
-    for(let d of this._dokTypes) {
+    for (let d of this._dokTypes) {
       this.sourceArray.push(d.dokType);
     }
 
@@ -113,11 +90,20 @@ export class SearchComponent implements OnInit {
   }
 
   toogleAdvanced() {
-    if(this.displayAdvanced === 'none') {
+    if (this.displayAdvanced === 'none') {
       this.displayAdvanced = 'inline';
     } else {
       this.displayAdvanced = 'none';
     }
+  }
+
+  emitFilter() {
+    console.log('filter changed');
+    this.filterChange.emit(this.filter);
+  }
+
+  onSortChanged(newValue) {
+    this.emitFilter();
   }
 
   onSelectAction(value): void {
@@ -141,17 +127,15 @@ export class SearchComponent implements OnInit {
 
   //Filter methods
   onItemSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
+    this.emitFilter();
   }
-  OnItemDeSelect(items: any) {
-    console.log(item);
-    console.log(this.selectedItems);
+  OnItemDeSelect(item: any) {
+    this.emitFilter();
   }
   onSelectAll(items: any) {
-    console.log(items);
+    this.emitFilter();
   }
   onDeSelectAll(items: any) {
-    console.log(items);
+    this.emitFilter();
   }
 }

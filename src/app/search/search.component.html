@@ -14,28 +14,28 @@
     </form>
 
     <div class="actions">
-      <select #actionList name="actionList" id="actionList" (change)="onSelectAction(actionList.value)">
-        <option value="">Vælg Handling</option>
-        <option value="addToAssignment">Tilknyt til Opgave</option>
-        <option value="download">Download Fil(er)</option>
-        <option value="print">Print Fil(er)</option>
-        <option value="errorMark">Fejlmarkér Fil(er)</option>
-      </select>
+        <select #actionList name="actionList" id="actionList" (change)="onSelectAction(actionList.value)">
+            <option value="">Vælg Handling</option>
+            <option value="addToAssignment">Tilknyt til Opgave</option>
+            <option value="download">Download Fil(er)</option>
+            <option value="print">Print Fil(er)</option>
+            <option value="errorMark">Fejlmarkér Fil(er)</option>
+          </select>
     </div>
 
     <div class="filters">
-      <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems"
-                          [settings]="dropdownSettings"
+      <angular2-multiselect [data]="filter.dropdownList" [(ngModel)]="filter.selectedItems"
+                          [settings]="filter.dropdownSettings"
                           (onSelect)="onItemSelect($event)"
                           (onDeSelect)="OnItemDeSelect($event)"
                           (onSelectAll)="onSelectAll($event)"
                           (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
 
-      <select class="orderSelect">
-        <option>Dokumenttype (nyeste først)</option>
-        <option>Dokumenttype (ældste først)</option>
-        <option>Måned (nyeste først)</option>
-        <option>Måned (ældste først)</option>
+      <select class="orderSelect" [value]="filter.selectedSortOption" (change)="onSortChanged($event)">
+          <option>Dokumenttype (Faldende)</option>
+          <option>Dokumenttype (Stigende)</option>
+          <option>Måned (Nyeste først)</option>
+          <option>Måned (Ældste først)</option>
       </select>
     </div>
     <!--<div class="numOfDocs">{{numOfResults}} resultater</div>-->
