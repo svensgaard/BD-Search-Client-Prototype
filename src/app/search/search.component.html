@@ -10,7 +10,7 @@
 
         <button class="flat-button" type="submit" (click)="onSearchPressed()">Søg</button>
 
-        <span *ngIf="numOfResults > 0">{{numOfResults}} resultater</span>
+        <span class="totalDocuments" *ngIf="numOfResults > 0">{{numOfResults}} resultater</span>
     </form>
 
     <div class="actions">
@@ -24,12 +24,23 @@
     </div>
 
     <div class="filters">
+
+
       <angular2-multiselect [data]="filter.dropdownList" [(ngModel)]="filter.selectedItems"
                           [settings]="filter.dropdownSettings"
                           (onSelect)="onItemSelect($event)"
                           (onDeSelect)="OnItemDeSelect($event)"
                           (onSelectAll)="onSelectAll($event)"
-                          (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
+                          (onDeSelectAll)="onDeSelectAll($event)">
+
+        <c-item>
+          <ng-template let-item="item">
+              <img *ngIf="item.image !== null" [src]="item.image" class="filterImage" />
+              <div *ngIf="item.image === null" class="filterImageSubstitute"></div>
+            <label class="filterLabel" >{{item.itemName}}</label>
+          </ng-template>
+        </c-item>
+      </angular2-multiselect>
 
       <select class="orderSelect" [value]="filter.selectedSortOption" (change)="onSortChanged($event.target.value)">
           <option>Dokumenttype (Å til A)</option>
@@ -37,7 +48,7 @@
           <option>Måned (Nyeste først)</option>
           <option>Måned (Ældste først)</option>
       </select>
+
     </div>
-    <!--<div class="numOfDocs">{{numOfResults}} resultater</div>-->
   <span class="clear"></span>
 </header>

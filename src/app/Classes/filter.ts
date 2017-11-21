@@ -20,13 +20,17 @@ export class Filter {
 
   constructor() {
     this.dropdownList = [
-      { 'id': 1, 'itemName': 'Kun synlige i Netbank' },
-      { 'id': 2, 'itemName': 'Medtag fejlbehæftede' },
-      { 'id': 3, 'itemName': 'Medtag autogenererede' }
+      { 'id': 1, 'itemName': 'Synlig i Netbank', image: '../assets/netbank.png', category: 'et' },
+      { 'id': 2, 'itemName': 'Kunden har læst dokumentet', image: '../assets/read.png', category: 'et' },
+      { 'id': 3, 'itemName': 'Dokumentet er underskrevet', image: '../assets/signed.png', category: 'et' },
+      { 'id': 4, 'itemName': 'Sendt til E-boks', image: '../assets/eboks.png', category: 'et' },
+      { 'id': 5, 'itemName': 'Sendt som brev', image: '../assets/letter.png', category: 'et' },
+      { 'id': 6, 'itemName': 'Medtag fejlbehæftede', image: null, category: 'to' },
+      { 'id': 7, 'itemName': 'Medtag autogenererede', image: null, category: 'to' },
     ];
 
     this.selectedItems = [
-      { 'id': 3, 'itemName': 'Medtag autogenererede' }
+      { 'id': 7, 'itemName': 'Medtag autogenererede' }
     ];
 
     this.dropdownSettings = {
@@ -34,7 +38,8 @@ export class Filter {
       selectAllText: 'Vælg Alle',
       unSelectAllText: 'Fravælg Alle',
       classes: 'filterSelect custom-class',
-      badgeShowLimit: 1
+      badgeShowLimit: 1,
+      //groupBy: 'category'
     };
 
   }

@@ -2,7 +2,7 @@
 <div class="categoryHeader" (click)="onClickHeader()">
 	<div style="float:left;">{{category.name}}
 		({{category.numberOfDocuments}} dokumenter)</div>
-	<div style="float:right; font-weight:bold;">{{headerStatusIndicator}}</div>
+	<div class="categoryStatusIndicator"><i class="material-icons">{{headerStatusIndicator}}</i></div>
 </div>
 <div class="categoryContent" [style.display]="display">
 	<table>

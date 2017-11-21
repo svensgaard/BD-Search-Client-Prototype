@@ -12,7 +12,7 @@ export class CategoryComponent implements OnInit {
   private _category: Category;
 
   display = 'none';
-  headerStatusIndicator = '-';
+  headerStatusIndicator = 'keyboard_arrow_down';
 
   constructor() {
   }
@@ -34,17 +34,17 @@ export class CategoryComponent implements OnInit {
     if(document.n1 !== '?') {returnstring+= document.n1 + ': ' + document.n1_value + '\t'; }
     if(document.n2 !== '?') {returnstring+= document.n2 + ': ' + document.n2_value + '\t'; }
     if(document.tekst !== '?') {returnstring+= document.tekst + ': ' + document.tekst_value;}
-    
+
     return  returnstring;
-    
+
   }
   onClickHeader() {
     if(this.display === 'none') {
       this.display = 'inline';
-      this.headerStatusIndicator = '-';
+      this.headerStatusIndicator = 'keyboard_arrow_up';
     } else {
       this.display = 'none';
-      this.headerStatusIndicator = '+';
+      this.headerStatusIndicator = 'keyboard_arrow_down';
     }
   }
 }
