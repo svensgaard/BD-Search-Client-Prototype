@@ -10,7 +10,7 @@
 
         <button class="flat-button" type="submit" (click)="search()">Søg</button>
 
-        <span *ngIf="numOfResults > 0">{{numOfResults}} resultater</span>
+        <span class="totalDocuments" *ngIf="numOfResults > 0">{{numOfResults}} resultater</span>
     </form>
 
     <div class="actions">
@@ -50,6 +50,5 @@
       </select>
 
     </div>
-    <!--<div class="numOfDocs">{{numOfResults}} resultater</div>-->
   <span class="clear"></span>
 </header>

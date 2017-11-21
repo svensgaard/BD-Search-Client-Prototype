@@ -28,12 +28,9 @@ header {
   margin-left: 5px;
 }
 
-.numOfDocs {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
+.totalDocuments {
+  margin-left: 10px;
   font-weight: bold;
-  font-size: 25px;
 }
 
 .orderSelect {
