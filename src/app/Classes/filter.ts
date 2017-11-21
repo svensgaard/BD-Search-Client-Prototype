@@ -65,7 +65,6 @@ export class Filter {
       }
     }
     wrapper.categories = categories;
-
     return wrapper;
   }
 

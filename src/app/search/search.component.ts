@@ -61,9 +61,10 @@ export class SearchComponent implements OnInit {
       .subscribe(types => this.dokTypes = types);
   }
 
-  onKeyEnter() {
+  onSearchPressed() {
     this.search();
-    console.log('searched with: ' + this.searchString);
+    this.filter.selectedSortOption = 'Dokumenttype (A til Å)';
+    this.filterChange.emit(this.filter);
   }
 
   set result(res: BDDocument[]) {
@@ -98,7 +99,7 @@ export class SearchComponent implements OnInit {
   }
 
   emitFilter() {
-    console.log('filter changed');
+    console.log('filter changed:');
     this.filterChange.emit(this.filter);
   }
 
