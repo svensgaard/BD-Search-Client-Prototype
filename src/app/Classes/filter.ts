@@ -9,8 +9,7 @@ export class Filter {
     'Juli', 'August', 'September', 'Oktober', 'November', 'December'
   ];
 
-  dividedBy: string;
-  sortBy: string;
+  selectedSortOption = 'Dokumenttype (Faldende)';
 
   categories: Category[];
 
@@ -19,7 +18,6 @@ export class Filter {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
-  sortOptions = [];
 
   constructor() {
     this.dropdownList = [
@@ -40,13 +38,6 @@ export class Filter {
       badgeShowLimit: 1
     };
 
-    this.sortOptions = [
-      '',
-      '',
-      '',
-      ''
-    ];
-
   }
 
   getFilteredDocs(docs: BDDocument[]): Category[] {
@@ -55,11 +46,11 @@ export class Filter {
     
         for (let doc of docs) {
           if (this.checkNetBank(doc) && this.checkFaulty(doc) && this.checkAutoGen(doc)) {
-            if (this.dividedBy === 'Dokument type') {
+            if (this.selectedSortOption === 'Dokumenttype (nyeste først)') {
               this.addToCategories(doc.dokType, doc);
-            } else if (this.dividedBy === 'Dato') {
+            } else if (this.selectedSortOption === 'Dato') {
               this.addToCategories(Filter.monthNames[new Date(doc.udskriftsDato).getMonth()], doc);
-            } else if (this.dividedBy === 'Netbox') {
+            } else if (this.selectedSortOption === 'Netbox') {
               this.addToCategories(doc.dokType, doc);
             }
     

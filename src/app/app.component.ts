@@ -32,10 +32,6 @@ export class AppComponent implements OnInit {
 
       //First filter is everything and on dok type
       let firstFilter = new Filter();
-      firstFilter.dividedBy = 'Dokument type';
-      firstFilter.sortBy = 'Faldende';
-
-
       this.filter = firstFilter;
     });
 

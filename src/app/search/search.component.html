@@ -14,13 +14,13 @@
     </form>
 
     <div class="actions">
-      <select>
-        <option>Vælg Handling</option>
-        <option>Tilknyt til Opgave</option>
-        <option>Download Fil(er)</option>
-        <option>Print Fil(er)</option>
-        <option>Fejlmarkér Fil(er)</option>
-      </select>
+        <select #actionList name="actionList" id="actionList" (change)="onSelectAction(actionList.value)">
+            <option value="">Vælg Handling</option>
+            <option value="addToAssignment">Tilknyt til Opgave</option>
+            <option value="download">Download Fil(er)</option>
+            <option value="print">Print Fil(er)</option>
+            <option value="errorMark">Fejlmarkér Fil(er)</option>
+          </select>
     </div>
 
     <div class="filters">
@@ -31,7 +31,11 @@
                           (onSelectAll)="onSelectAll($event)"
                           (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
 
-      <select class="orderSelect" ng-options="filter.sortOptions">
+      <select class="orderSelect" [value]="filter.selectedSortOption" (change)="onSortChanged($event)">
+          <option>Dokumenttype (Faldende)</option>
+          <option>Dokumenttype (Stigende)</option>
+          <option>Måned (Nyeste først)</option>
+          <option>Måned (Ældste først)</option>
       </select>
     </div>
     <!--<div class="numOfDocs">{{numOfResults}} resultater</div>-->
