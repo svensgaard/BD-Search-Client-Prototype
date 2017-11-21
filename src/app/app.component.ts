@@ -42,7 +42,6 @@ export class AppComponent implements OnInit {
   }
   set filter(newFilter: Filter) {
     this._filter = newFilter;
-    console.log('I know...');
     if (this.results != null) {
       this._filteredResults = this.filter.getFilteredDocs(this.results);
     }

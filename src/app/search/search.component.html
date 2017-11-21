@@ -31,7 +31,7 @@
                           (onSelectAll)="onSelectAll($event)"
                           (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
 
-      <select class="orderSelect" [value]="filter.selectedSortOption" (change)="onSortChanged($event)">
+      <select class="orderSelect" (change)="onSortChanged($event.target.value)">
           <option>Dokumenttype (Faldende)</option>
           <option>Dokumenttype (Stigende)</option>
           <option>Måned (Nyeste først)</option>

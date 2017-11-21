@@ -102,7 +102,8 @@ export class SearchComponent implements OnInit {
     this.filterChange.emit(this.filter);
   }
 
-  onSortChanged(newValue) {
+  onSortChanged(option) {
+    this.filter.selectedSortOption = option;
     this.emitFilter();
   }
 
