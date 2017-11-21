@@ -1,6 +1,7 @@
 import { BDDokType } from './BDDokType';
 import { BDDocument } from './bddocument';
 import { Category } from './category';
+import { ResultWrapper, SortBy, SortType } from './resultWrapper';
 
 
 export class Filter {
@@ -9,9 +10,7 @@ export class Filter {
     'Juli', 'August', 'September', 'Oktober', 'November', 'December'
   ];
 
-  selectedSortOption = 'Dokumenttype (Faldende)';
-
-  categories: Category[];
+  selectedSortOption = 'Dokumenttype (A til Å)';
 
   dokTyper: BDDokType[];
 
@@ -40,32 +39,45 @@ export class Filter {
 
   }
 
-  getFilteredDocs(docs: BDDocument[]): Category[] {
-
-    this.categories = new Array<Category>();
+  getFilteredDocs(docs: BDDocument[]): ResultWrapper {
+    let wrapper = new ResultWrapper();
+    let categories = new Array<Category>();
     for (let doc of docs) {
       if (this.checkNetBank(doc) && this.checkFaulty(doc) && this.checkAutoGen(doc)) {
-        if (this.selectedSortOption === 'Dokumenttype (Faldende)') {
-          this.addToCategories(doc.dokType, doc, 'faldende', 'dokType');
-        } else if (this.selectedSortOption === 'Dokumenttype (Stigende)') {
-          this.addToCategories(doc.dokType, doc, 'stigende', 'dokType');
+        if (this.selectedSortOption === 'Dokumenttype (Å til A)') {
+          this.addToCategories(doc.dokType, doc, categories);
+          wrapper.sortBy = SortBy.DokType;
+          wrapper.sortType = SortType.Faldende;
+        } else if (this.selectedSortOption === 'Dokumenttype (A til Å)') {
+          this.addToCategories(doc.dokType, doc, categories);
+          wrapper.sortBy = SortBy.DokType;
+          wrapper.sortType = SortType.Stigende;         
         } else if (this.selectedSortOption === 'Måned (Nyeste først)') {
-          this.addToCategories(new Date(doc.udskriftsDato).getFullYear() + ' - ' +Filter.monthNames[new Date(doc.udskriftsDato).getMonth()], doc, 'faldende', 'date');
+          this.addToCategories(this.getCategoryDateName(doc.udskriftsDato), doc, categories);
+          wrapper.sortBy = SortBy.Dato;
+          wrapper.sortType = SortType.Stigende;          
         } else if (this.selectedSortOption === 'Måned (Ældste først)') {
-          this.addToCategories(new Date(doc.udskriftsDato).getFullYear() + ' - ' +Filter.monthNames[new Date(doc.udskriftsDato).getMonth()], doc, 'stigende', 'date');
+          this.addToCategories(this.getCategoryDateName(doc.udskriftsDato), doc, categories);
+          wrapper.sortBy = SortBy.Dato;
+          wrapper.sortType = SortType.Faldende;         
         }
 
       }
     }
+    wrapper.categories = categories;
 
-    return this.categories;
+    return wrapper;
   }
 
-  addToCategories(categoryName: string, doc: BDDocument, sortering: string, sortType: string) {
+  getCategoryDateName(date: any) {
+    return new Date(date).getFullYear() + ' - ' +Filter.monthNames[new Date(date).getMonth()];
+  }
+
+  addToCategories(categoryName: string, doc: BDDocument, categories: Category[]) {
     let exists: boolean;
     exists = false;
 
-    for (let cat of this.categories) {
+    for (let cat of categories) {
       if (cat.name === categoryName) {
         cat.addDocument(doc);
         exists = true;
@@ -73,11 +85,9 @@ export class Filter {
     }
     if (!exists) {
       let newCat = new Category(categoryName);
-      newCat.sortBy = sortering;
-      newCat.sortType = sortType;
       newCat.addDocument(doc);
 
-      this.categories.push(newCat);
+      categories.push(newCat);
     }
 
   }

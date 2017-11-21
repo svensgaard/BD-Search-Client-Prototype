@@ -4,8 +4,7 @@ export class Category {
   name: string;
   private _numberOfDocuments: number;
   documents: BDDocument[];
-  sortBy: string;
-  sortType: string;
+
 
   constructor(name: string) {
     this.name = name;
@@ -18,10 +17,17 @@ export class Category {
     this.documents.push(docToAdd);
   }
 
-  compareTo(other: Category) {
-    if(other === null || other === undefined) { return 1; }
-
-    
+  compare(a: BDDocument, b: BDDocument) {
+    if (new Date(a.udskriftsDato).getTime() < new Date(b.udskriftsDato).getTime()) {
+      return -1;      
+    }
+    if (new Date(a.udskriftsDato).getTime() > new Date(b.udskriftsDato).getTime()) {
+      return 1;      
+    }
+    return 0;
   }
-  
+
+  sort() {
+    this.documents.sort(this.compare);
+  }
 }

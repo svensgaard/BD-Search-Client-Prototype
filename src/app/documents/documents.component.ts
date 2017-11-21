@@ -1,6 +1,7 @@
 import { Category } from '../Classes/category';
 import { BDDocument } from '../Classes/bddocument';
 import { Component, OnInit, Input } from '@angular/core';
+import { ResultWrapper } from '../Classes/resultWrapper';
 
 @Component({
   selector: 'app-documents',
@@ -9,16 +10,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DocumentsComponent implements OnInit {
 
-  private _categories: Category[];
+  private _resultWrapper: ResultWrapper;
   
   constructor() { }
 
   get categories(): Category[] {
-    return this._categories;
+    if(this._resultWrapper !== null) {
+      return this._resultWrapper.categories;
+    } else {
+      return null;
+    }
+    
   }
   @Input()
-  set categories(categories: Category[]) {
-    this._categories = categories;
+  set resultWrapper(resultWrapper: ResultWrapper) {
+    this._resultWrapper = resultWrapper;
+    if(this._resultWrapper !== null) {
+      this._resultWrapper.sort();
+    }
   }
   
   ngOnInit() {

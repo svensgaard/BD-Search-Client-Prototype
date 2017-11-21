@@ -4,8 +4,7 @@
 <div class="mainPlaceholder">
 	<!-- Filters -->
 	<!-- <app-filter [(filter)]="filter"></app-filter> -->
-	{{filter.toString()}}
 	<!-- output -->
-	<app-documents [categories]="filteredResults"></app-documents>
+	<app-documents [resultWrapper]="filteredResults"></app-documents>
 	<div [style.display]="displayError" style="color:RED;font-weight:bold;font-size:35px">Ingen dokumenter fundet</div>
 </div>
