@@ -14,12 +14,12 @@
     </form>
 
     <div class="actions">
-      <select>
-        <option>Vælg Handling</option>
-        <option>Tilknyt til Opgave</option>
-        <option>Download Fil(er)</option>
-        <option>Print Fil(er)</option>
-        <option>Fejlmarkér Fil(er)</option>
+      <select #actionList name="actionList" id="actionList" (change)="onSelectAction(actionList.value)">
+        <option value="">Vælg Handling</option>
+        <option value="addToAssignment">Tilknyt til Opgave</option>
+        <option value="download">Download Fil(er)</option>
+        <option value="print">Print Fil(er)</option>
+        <option value="errorMark">Fejlmarkér Fil(er)</option>
       </select>
     </div>
 

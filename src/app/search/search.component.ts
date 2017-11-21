@@ -1,10 +1,13 @@
 import { Filter } from './../Classes/filter';
 import { BDDokType } from './../Classes/BDDokType';
-import {Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation, ViewContainerRef} from '@angular/core';
 import {Category} from '../Classes/category';
 import {BDDocument} from '../Classes/bddocument';
 import {DocumentService} from '../document.service';
 import { DoktyperService } from '../doktyper.service';
+import { ToastsManager } from 'ng2-toastr';
+
+
 
 @Component({
   selector: 'app-search',
@@ -45,24 +48,14 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private documentService: DocumentService,
-    private documentTypeService: DoktyperService
+    private documentTypeService: DoktyperService,
+    public toastr: ToastsManager,
+    vcr: ViewContainerRef
   ) {
-    this.dropdownList = [
-<<<<<<< HEAD
-      { 'id': 1, 'itemName': 'India' },
-      { 'id': 2, 'itemName': 'Singapore' },
-      { 'id': 3, 'itemName': 'Australia' },
-      { 'id': 4, 'itemName': 'Canada' },
-      { 'id': 5, 'itemName': 'South Korea' },
-      { 'id': 6, 'itemName': 'Brazil' }
-    ];
 
-    this.selectedItems = [
-      { 'id': 1, 'itemName': 'India' },
-      { 'id': 2, 'itemName': 'Singapore' },
-      { 'id': 3, 'itemName': 'Australia' },
-      { 'id': 4, 'itemName': 'Canada' }];
-=======
+    this.toastr.setRootViewContainerRef(vcr);
+
+    this.dropdownList = [
       { "id": 1, "itemName": "Kun synlige i Netbank" },
       { "id": 2, "itemName": "Medtag fejlbehæftede" },
       { "id": 3, "itemName": "Medtag autogenererede" }
@@ -71,7 +64,6 @@ export class SearchComponent implements OnInit {
     this.selectedItems = [
       { "id": 3, "itemName": "Medtag autogenererede" }
     ];
->>>>>>> 80dcb0f9d5b594a193eff64f2318b6c150a414df
 
     this.dropdownSettings = {
       text: 'Vælg filtre',
@@ -125,6 +117,25 @@ export class SearchComponent implements OnInit {
       this.displayAdvanced = 'inline';
     } else {
       this.displayAdvanced = 'none';
+    }
+  }
+
+  onSelectAction(value): void {
+    switch (value) {
+      case "addToAssignment":
+        this.toastr.success("Dokument(erne) er tilføjet til opgaven", 'Tilføjet til opgave');
+        break;
+      case "download":
+        this.toastr.success("Dokument(erne) er downloadet", 'Download fil(er)');
+        break;
+      case "print":
+        this.toastr.success("Dokument(erne) bliver nu pakket til print", 'Sendt til print');
+        break;
+      case "errorMark":
+        this.toastr.success("Dokument(erne) sendes til fejlmarkering", 'Fejlmarkering');
+        break;
+      default:
+        this.toastr.info("Du har ikke valgt nogen handling...", 'Ingen handling valgt');
     }
   }
 

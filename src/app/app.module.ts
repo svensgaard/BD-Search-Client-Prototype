@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import {NgxPopperModule} from 'ngx-popper';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown/angular2-multiselect-dropdown';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,8 @@ import { CategoryComponent } from './category/category.component';
 import { DocumentService } from './document.service';
 import { PopperContentComponent } from './popper-content/popper-content.component';
 import { AppRoutingModule } from './/app-routing.module';
+import {ToastModule} from "ng2-toastr";
+
 
 
 @NgModule({
@@ -36,7 +39,9 @@ import { AppRoutingModule } from './/app-routing.module';
     Ng2AutoCompleteModule,
     NgxPopperModule,
     AppRoutingModule,
-    AngularMultiSelectModule
+    AngularMultiSelectModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot()
   ],
   providers: [DocumentService, DoktyperService],
   bootstrap: [RootComponent]
