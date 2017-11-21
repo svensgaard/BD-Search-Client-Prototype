@@ -39,48 +39,12 @@ export class SearchComponent implements OnInit {
   }
 
   //Filter Dropdown
-  dropdownList = [];
-  selectedItems = [];
-  dropdownSettings = {};
+  
 
   constructor(
     private documentService: DocumentService,
     private documentTypeService: DoktyperService
-  ) {
-    this.dropdownList = [
-<<<<<<< HEAD
-      { 'id': 1, 'itemName': 'India' },
-      { 'id': 2, 'itemName': 'Singapore' },
-      { 'id': 3, 'itemName': 'Australia' },
-      { 'id': 4, 'itemName': 'Canada' },
-      { 'id': 5, 'itemName': 'South Korea' },
-      { 'id': 6, 'itemName': 'Brazil' }
-    ];
-
-    this.selectedItems = [
-      { 'id': 1, 'itemName': 'India' },
-      { 'id': 2, 'itemName': 'Singapore' },
-      { 'id': 3, 'itemName': 'Australia' },
-      { 'id': 4, 'itemName': 'Canada' }];
-=======
-      { "id": 1, "itemName": "Kun synlige i Netbank" },
-      { "id": 2, "itemName": "Medtag fejlbehæftede" },
-      { "id": 3, "itemName": "Medtag autogenererede" }
-    ];
-
-    this.selectedItems = [
-      { "id": 3, "itemName": "Medtag autogenererede" }
-    ];
->>>>>>> 80dcb0f9d5b594a193eff64f2318b6c150a414df
-
-    this.dropdownSettings = {
-      text: 'Vælg filtre',
-      selectAllText: 'Vælg Alle',
-      unSelectAllText: 'Fravælg Alle',
-      classes: 'filterSelect custom-class',
-      badgeShowLimit: 1
-    };
-  }
+  ) {}
 
   ngOnInit() {
     this.sourceArray = new Array();
@@ -128,20 +92,22 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  emitFilter() {
+    console.log('filter changed');
+    this.filterChange.emit(this.filter);
+  }
 
   //Filter methods
   onItemSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
+    this.emitFilter();
   }
   OnItemDeSelect(item: any) {
-    console.log(item);
-    console.log(this.selectedItems);
+    this.emitFilter();
   }
   onSelectAll(items: any) {
-    console.log(items);
+    this.emitFilter();
   }
   onDeSelectAll(items: any) {
-    console.log(items);
+    this.emitFilter();
   }
 }
