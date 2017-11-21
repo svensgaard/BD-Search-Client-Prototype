@@ -1,0 +1,20 @@
+.iconTable {
+  display: table;
+}
+
+.iconRow {
+  display: table-row;
+}
+
+.iconCell {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.iconCell span {
+  margin-left: 10px;
+}
+
+.iconCell img {
+  width: 25px;
+}

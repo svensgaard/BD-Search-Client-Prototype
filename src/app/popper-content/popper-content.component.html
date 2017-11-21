@@ -1,8 +1,75 @@
 <div class="popperContent">
-  <img [src]="netBankIconUrl" [style.display]="netBankIconDisplay">
-  <img [src]="notNetBankIconUrl" [style.display]="notNetBankIconDisplay">  
-  <img [src]="kundeLaestIconUrl" [style.display]="kundeLaestIconDisplay">
-  <img [src]="kundeIkkeLaestIconUrl" [style.display]="kundeIkkeLaestIconDisplay">
-  <img [src]="letterIconUrl" [style.display]="letterIconDisplay">
-  <img [src]="eboksIconUrl" [style.display]="eboksIconDisplay">
+  <div class="iconTable">
+    <div class="iconRow" [style.display]="netBankIconDisplay">
+      <div class="iconCell">
+        <img [src]="netBankIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Dokumentet er i Netbank</span>
+      </div>
+    </div>
+
+    <div class="iconRow" [style.display]="notNetBankIconDisplay">
+      <div class="iconCell">
+        <img [src]="notNetBankIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Dokumentet er IKKE i Netbank</span>
+      </div>
+    </div>
+
+    <div class="iconRow" [style.display]="kundeLaestIconDisplay">
+      <div class="iconCell">
+        <img [src]="kundeLaestIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Kunden har læst dokumentet</span>
+      </div>
+    </div>
+
+    <div class="iconRow" [style.display]="kundeIkkeLaestIconDisplay">
+      <div class="iconCell">
+        <img [src]="kundeIkkeLaestIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Kunden har IKKE læst dokumentet</span>
+      </div>
+    </div>
+
+    <div class="iconRow" [style.display]="letterIconDisplay">
+      <div class="iconCell">
+        <img [src]="letterIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Sendt med brev til kunden</span>
+      </div>
+    </div>
+
+    <div class="iconRow" [style.display]="eboksIconDisplay">
+      <div class="iconCell">
+        <img [src]="eboksIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Lagt i kundens E-boks</span>
+      </div>
+    </div>
+
+    <div class="iconRow" [style.display]="signedIconDisplay">
+      <div class="iconCell">
+        <img [src]="signedIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Dokumentet er underskrevet</span>
+      </div>
+    </div>
+
+    <div class="iconRow" [style.display]="signedElectronicallyIconDisplay">
+      <div class="iconCell">
+        <img [src]="signedElectronicallyIconUrl">
+      </div>
+      <div class="iconCell">
+        <span>Dokumentet er underskrevet elektronisk</span>
+      </div>
+    </div>
+  </div>
 </div>

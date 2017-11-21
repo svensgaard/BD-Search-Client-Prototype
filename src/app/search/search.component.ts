@@ -56,13 +56,13 @@ export class SearchComponent implements OnInit {
     this.toastr.setRootViewContainerRef(vcr);
 
     this.dropdownList = [
-      { "id": 1, "itemName": "Kun synlige i Netbank" },
-      { "id": 2, "itemName": "Medtag fejlbehæftede" },
-      { "id": 3, "itemName": "Medtag autogenererede" }
+      { 'id': 1, 'itemName': 'Kun synlige i Netbank' },
+      { 'id': 2, 'itemName': 'Medtag fejlbehæftede' },
+      { 'id': 3, 'itemName': 'Medtag autogenererede' }
     ];
 
     this.selectedItems = [
-      { "id": 3, "itemName": "Medtag autogenererede" }
+      { 'id': 3, 'itemName': 'Medtag autogenererede' }
     ];
 
     this.dropdownSettings = {
@@ -139,13 +139,12 @@ export class SearchComponent implements OnInit {
     }
   }
 
-
   //Filter methods
   onItemSelect(item: any) {
     console.log(item);
     console.log(this.selectedItems);
   }
-  OnItemDeSelect(item: any) {
+  OnItemDeSelect(items: any) {
     console.log(item);
     console.log(this.selectedItems);
   }

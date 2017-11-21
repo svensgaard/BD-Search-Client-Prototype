@@ -15,6 +15,8 @@ export class PopperContentComponent implements OnInit {
   kundeIkkeLaestIconUrl = '/assets/not_read.png';
   letterIconUrl = '/assets/letter.png';
   eboksIconUrl = '/assets/eboks.png';
+  signedIconUrl = '/assets/signed.png';
+  signedElectronicallyIconUrl = '/assets/signed_electronic.png';
 
   netBankIconDisplay = 'none';
   notNetBankIconDisplay = 'none';
@@ -22,12 +24,10 @@ export class PopperContentComponent implements OnInit {
   kundeIkkeLaestIconDisplay = 'none';
   letterIconDisplay = 'none';
   eboksIconDisplay = 'none';
+  signedIconDisplay = "none";
+  signedElectronicallyIconDisplay = "none";
 
-
-
-
-
-  constructor() { }
+constructor() { }
 
   ngOnInit() {
   }
@@ -37,10 +37,10 @@ export class PopperContentComponent implements OnInit {
     this._doc = document;
     //Netbank
     if(this._doc.synligNetbank === 'J') {
-      this.netBankIconDisplay = 'inline';
+      this.netBankIconDisplay = 'table-row';
       this.notNetBankIconDisplay = 'none';
     } else {
-      this.notNetBankIconDisplay = 'inline';
+      this.notNetBankIconDisplay = 'table-row';
       this.netBankIconDisplay = 'none';
     }
 
