@@ -38,9 +38,6 @@ export class SearchComponent implements OnInit {
     return oneYearAgo;
   }
 
-  //Filter Dropdown
-  
-
   constructor(
     private documentService: DocumentService,
     private documentTypeService: DoktyperService

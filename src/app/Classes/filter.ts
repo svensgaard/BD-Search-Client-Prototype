@@ -19,6 +19,7 @@ export class Filter {
   dropdownList = [];
   selectedItems = [];
   dropdownSettings = {};
+  sortOptions = [];
 
   constructor() {
     this.dropdownList = [
@@ -38,6 +39,13 @@ export class Filter {
       classes: 'filterSelect custom-class',
       badgeShowLimit: 1
     };
+
+    this.sortOptions = [
+      '',
+      '',
+      '',
+      ''
+    ];
 
   }
 

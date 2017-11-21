@@ -31,11 +31,7 @@
                           (onSelectAll)="onSelectAll($event)"
                           (onDeSelectAll)="onDeSelectAll($event)"></angular2-multiselect>
 
-      <select class="orderSelect">
-        <option>Dokumenttype (nyeste først)</option>
-        <option>Dokumenttype (ældste først)</option>
-        <option>Måned (nyeste først)</option>
-        <option>Måned (ældste først)</option>
+      <select class="orderSelect" ng-options="filter.sortOptions">
       </select>
     </div>
     <!--<div class="numOfDocs">{{numOfResults}} resultater</div>-->
