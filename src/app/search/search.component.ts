@@ -122,20 +122,20 @@ export class SearchComponent implements OnInit {
 
   onSelectAction(value): void {
     switch (value) {
-      case "addToAssignment":
-        this.toastr.success("Dokument(erne) er tilføjet til opgaven", 'Tilføjet til opgave');
+      case 'addToAssignment':
+        this.toastr.success('Dokument(erne) er tilføjet til opgaven', 'Tilføjet til opgave');
         break;
-      case "download":
-        this.toastr.success("Dokument(erne) er downloadet", 'Download fil(er)');
+      case 'download':
+        this.toastr.success('Dokument(erne) er downloadet', 'Download fil(er)');
         break;
-      case "print":
-        this.toastr.success("Dokument(erne) bliver nu pakket til print", 'Sendt til print');
+      case 'print':
+        this.toastr.success('Dokument(erne) bliver nu pakket til print', 'Sendt til print');
         break;
-      case "errorMark":
-        this.toastr.success("Dokument(erne) sendes til fejlmarkering", 'Fejlmarkering');
+      case 'errorMark':
+        this.toastr.success('Dokument(erne) sendes til fejlmarkering', 'Fejlmarkering');
         break;
       default:
-        this.toastr.info("Du har ikke valgt nogen handling...", 'Ingen handling valgt');
+        this.toastr.info('Du har ikke valgt nogen handling...', 'Ingen handling valgt');
     }
   }
 
