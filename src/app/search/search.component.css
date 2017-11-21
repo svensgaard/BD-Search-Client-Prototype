@@ -15,7 +15,7 @@ header {
 
 .searchForm {
   text-align: left;
-  padding: 20px;
+  padding: 20px 20px 15px 20px;
 }
 
 .searchForm input[type="date"] {
@@ -36,12 +36,6 @@ header {
   font-size: 25px;
 }
 
-.filterSelect {
-  width: 300px;
-  display: block;
-  float: left;
-}
-
 .orderSelect {
   display: block;
   float: right;
@@ -55,9 +49,33 @@ header {
 
 .filters {
   float: right;
-  width: 550px;
 }
 
 .clear {
   clear: both;
+}
+
+.filterImage, .filterImageSubstitute {
+  height: 20px;
+  margin: 0 20px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.filterImageSubstitute {
+  width: 20px;
+  display: inline-block;
+}
+
+.filterLabel {
+  color: #333;
+  min-width: 150px;
+  margin-right: 10px;
+}
+
+.filterSelect {
+  width: 375px;
+  display: block;
+  float: left;
+  margin: 0 40px 10px 0;
 }
