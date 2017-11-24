@@ -90,14 +90,6 @@ export class SearchComponent implements OnInit {
       .subscribe(docs => this.result = docs);
   }
 
-  toogleAdvanced() {
-    if (this.displayAdvanced === 'none') {
-      this.displayAdvanced = 'inline';
-    } else {
-      this.displayAdvanced = 'none';
-    }
-  }
-
   emitFilter() {
     this.filterChange.emit(this.filter);
   }

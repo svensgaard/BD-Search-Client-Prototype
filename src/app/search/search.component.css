@@ -10,7 +10,8 @@ header {
 
 .searchInput {
   width: 400px;
-  height: 18px;
+  height: 24px;
+  color: #000000;
 }
 
 .searchForm {
@@ -36,12 +37,12 @@ header {
 .orderSelect {
   display: block;
   float: right;
-  margin-right: 15px;
+  margin: 0 15px 0 0;
 }
 
 .actions {
   float: left;
-  margin: 10px;
+  margin: 0 0 0 19px;
 }
 
 .filters {
@@ -75,4 +76,15 @@ header {
   display: block;
   float: left;
   margin: 0 40px 10px 0;
+}
+
+
+.selectSizeNormalizer, .selected-list[_ngcontent-c3] .c-btn[_ngcontent-c3] {
+  padding: 5px !important;
+}
+
+
+.selected-list[_ngcontent-c3] .c-btn[_ngcontent-c3] {
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
