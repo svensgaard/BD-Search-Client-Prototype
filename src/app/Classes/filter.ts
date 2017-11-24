@@ -97,7 +97,7 @@ export class Filter {
   }
 
   checkAutoGen(doc: BDDocument): boolean {
-    if (this.checkSelectedItem(3) || this.dokTyper == null) {
+    if (this.checkSelectedItem(7) || this.dokTyper == null) {
       return true;
     } else {
 
