@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.refnummer = params['refnummer'];
 
-      if(this.refnummer === null || this.refnummer === undefined) {this.refnummer = '2057642';}
+      if(this.refnummer === null || this.refnummer === undefined || this.refnummer === '') {this.refnummer = '8101810';}
 
       //First filter is everything and on dok type
       let firstFilter = new Filter();
