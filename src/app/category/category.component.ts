@@ -2,6 +2,8 @@ import {BDDocument} from '../Classes/bddocument';
 import {Category} from '../Classes/category';
 import {Component, OnInit, Input} from '@angular/core';
 
+import { DanishWeekdayPipe } from './../danish-weekday.pipe';
+
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',

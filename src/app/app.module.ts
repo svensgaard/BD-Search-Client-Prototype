@@ -18,6 +18,7 @@ import { DocumentService } from './document.service';
 import { PopperContentComponent } from './popper-content/popper-content.component';
 import { AppRoutingModule } from './/app-routing.module';
 import {ToastModule} from 'ng2-toastr';
+import { DanishWeekdayPipe } from './danish-weekday.pipe';
 
 
 
@@ -28,7 +29,8 @@ import {ToastModule} from 'ng2-toastr';
     SearchComponent,
     CategoryComponent,
     PopperContentComponent,
-    RootComponent
+    RootComponent,
+    DanishWeekdayPipe
   ],
   imports: [
     BrowserModule,

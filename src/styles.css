@@ -98,74 +98,7 @@ main {
     overflow: hidden;
 }
 
-.category {
-    width: 100%;
-}
 
-.categoryHeader {
-    width: 99%;
-    height: 20px;
-    background-color: #012F60;
-    color: #fff;
-    padding: 0.6%;
-    font-weight: bold;
-    border-style: solid;
-    border-width: 2px;
-    border-color: white;
-}
-
-.categoryHeader:hover {
-	background-color: #4ea3fd;
-	cursor: pointer;
-}
-
-.categoryContent {
-    width: 100%;
-}
-
-.categoryContent table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
-.categoryContent tr:nth-child(odd) {
-    background-color: #fff;
-}
-
-.categoryContent tr:nth-child(even) {
-    background-color: #cde5fe;
-}
-
-.categoryContent th,
-.categoryContent td {
-    border-right: 1px solid #012F60;
-    border-left: 1px solid #012F60;
-    padding: 0.2em;
-}
-
-.categoryContent th {
-    text-align: left;
-    border-bottom: 1px solid #012F60;
-}
-
-/*----------- Column classes -------------*/
-
-.checkboxColumn {
-    width: 20px;
-}
-
-.shortDateColumn {
-    width: 115px;
-}
-
-.longDateColumn {
-    width: 200px;
-}
-
-.docTypeColumn {
-    width: 250px;
-}
 
 
 
