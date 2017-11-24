@@ -31,7 +31,7 @@ function get_docTypes()
 			$num = count($data);	
 			if(!$headers) {
 				$d = utf8ize($data);
-				$docTypesToReturn[] = new DocumentType($d[0], $d[1]);
+				$docTypesToReturn[] = new DocumentType($d[0]);
 			} else {
 				$headers = false;
 			}
@@ -60,11 +60,9 @@ function utf8ize($d) {
 
 class DocumentType {
 	var $dokType;
-	var $autoGen;
 
-	public function __construct($dokType, $autoGen) {
+	public function __construct($dokType) {
 		$this->dokType = $dokType;
-		$this->autoGen = $autoGen;
     }
 }
 
