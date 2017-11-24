@@ -98,7 +98,7 @@ class Document {
 	var $sletDato;
 	var $fejlMarkeret;
 	var $forsendelsesKode;
-	var $kundeLeast;
+	var $kundeLaest;
 	var $e_underskrevet;
 	var $autogenereret;
 	var $n1;
@@ -119,7 +119,7 @@ class Document {
 		$this->sletDato = $sletDato;
 		$this->fejlMarkeret = $fejlMarkeret;
         $this->forsendelsesKode = $forsendelsesKode;
-		$this->kundeLeast = $kundeLeast;
+		$this->kundeLaest = $kundeLaest;
         $this->e_underskrevet = $e_underskrevet;
         $this->autogenereret = $autogenereret;
         $this->n1 = $n1;

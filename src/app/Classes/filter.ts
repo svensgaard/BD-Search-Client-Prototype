@@ -25,13 +25,11 @@ export class Filter {
       { 'id': 3, 'itemName': 'Dokumentet er underskrevet', image: '../assets/signed.png', category: 'et' },
       { 'id': 4, 'itemName': 'Sendt til E-boks', image: '../assets/eboks.png', category: 'et' },
       { 'id': 5, 'itemName': 'Sendt som brev', image: '../assets/letter.png', category: 'et' },
-      { 'id': 6, 'itemName': 'Medtag fejlbehæftede', image: null, category: 'to' },
-      { 'id': 7, 'itemName': 'Medtag autogenererede', image: null, category: 'to' },
+      { 'id': 6, 'itemName': 'Fejlbehæftet', image: null, category: 'to' },
+      { 'id': 7, 'itemName': 'Autogenereret', image: null, category: 'to' },
     ];
 
-    this.selectedItems = [
-      { 'id': 7, 'itemName': 'Medtag autogenererede' }
-    ];
+    this.selectedItems = [];
 
     this.dropdownSettings = {
       text: 'Vælg filtre',
@@ -47,8 +45,9 @@ export class Filter {
   getFilteredDocs(docs: BDDocument[]): ResultWrapper {
     let wrapper = new ResultWrapper();
     let categories = new Array<Category>();
+    console.log(this.selectedItems);
     for (let doc of docs) {
-      if (this.checkNetBank(doc) && this.checkFaulty(doc) && this.checkAutoGen(doc)) {
+      if (this.checkFilter(doc)) {
         if (this.selectedSortOption === 'Dokumenttype (Å til A)') {
           this.addToCategories(doc.dokType, doc, categories);
           wrapper.sortBy = SortBy.DokType;
@@ -56,15 +55,15 @@ export class Filter {
         } else if (this.selectedSortOption === 'Dokumenttype (A til Å)') {
           this.addToCategories(doc.dokType, doc, categories);
           wrapper.sortBy = SortBy.DokType;
-          wrapper.sortType = SortType.Stigende;         
+          wrapper.sortType = SortType.Stigende;
         } else if (this.selectedSortOption === 'Måned (Nyeste først)') {
           this.addToCategories(this.getCategoryDateName(doc.udskriftsDato), doc, categories);
           wrapper.sortBy = SortBy.Dato;
-          wrapper.sortType = SortType.Stigende;          
+          wrapper.sortType = SortType.Stigende;
         } else if (this.selectedSortOption === 'Måned (Ældste først)') {
           this.addToCategories(this.getCategoryDateName(doc.udskriftsDato), doc, categories);
           wrapper.sortBy = SortBy.Dato;
-          wrapper.sortType = SortType.Faldende;         
+          wrapper.sortType = SortType.Faldende;
         }
 
       }
@@ -74,7 +73,7 @@ export class Filter {
   }
 
   getCategoryDateName(date: any) {
-    return new Date(date).getFullYear() + ' - ' +Filter.monthNames[new Date(date).getMonth()];
+    return new Date(date).getFullYear() + ' - ' + Filter.monthNames[new Date(date).getMonth()];
   }
 
   addToCategories(categoryName: string, doc: BDDocument, categories: Category[]) {
@@ -92,22 +91,67 @@ export class Filter {
       newCat.addDocument(doc);
 
       categories.push(newCat);
+    }   
+  }
+
+  checkFilter(doc: BDDocument): boolean {
+    return this.checkNetBank(doc)
+      && this.checkFaulty(doc)
+      && this.checkAutoGen(doc)
+      && this.checkLæst(doc)
+      && this.checkUnderskrevet(doc)
+      && this.checkEBoks(doc)
+      && this.checkBrev(doc);
+  }
+
+  checkBrev(doc: BDDocument): boolean {
+    if (doc === null) { return false; }
+
+    if (this.checkSelectedItem(5) && !doc.forsendelsesKode.includes('K')) {
+        return false;
     }
 
+    return true;
+  }
+
+  checkEBoks(doc: BDDocument): boolean {
+    if (doc === null) { return false; }
+
+    if (this.checkSelectedItem(4) && !doc.forsendelsesKode.includes('E')) {
+        return false;
+    }
+
+    return true;
+  }
+
+  checkUnderskrevet(doc: BDDocument): boolean {
+    if (doc === null) { return false; }
+
+    if (this.checkSelectedItem(3) && doc.e_underskrevet === 'N') {
+      return false;
+    }
+
+    return true;
+  }
+
+  checkLæst(doc: BDDocument): boolean {
+    if (doc === null) { return false; }
+
+    if (this.checkSelectedItem(2) && doc.kundeLeast === 'N') {
+      return false;
+    }
+
+    return true;
   }
 
   checkAutoGen(doc: BDDocument): boolean {
-    if (this.checkSelectedItem(7) || this.dokTyper == null) {
-      return true;
-    } else {
+    if (doc === null) { return false; }
 
-      for (let dt of this.dokTyper) {
-        if (doc.dokType === dt.dokType && dt.autoGen === '0') {
-          return true;
-        }
-      }
+    if (this.checkSelectedItem(7) && doc.autogenereret === 'N') {
       return false;
     }
+
+    return true;
   }
 
   checkNetBank(doc: BDDocument): boolean {
@@ -122,8 +166,8 @@ export class Filter {
 
   checkFaulty(doc: BDDocument): boolean {
     if (doc === null) { return false; }
-
-    if (!this.checkSelectedItem(2) && doc.fejlMarkeret === 'J') {
+    console.log(doc);
+    if (this.checkSelectedItem(6) && doc.fejlMarkeret === '0') {
       return false;
     }
 

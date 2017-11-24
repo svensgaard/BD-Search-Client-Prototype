@@ -9,16 +9,20 @@ export class BDDocument {
   sletDato: string;
   fejlMarkeret: string;
   forsendelsesKode: string;
+  kundeLeast: string;
+  e_underskrevet: string;
+  autogenereret: string;
   n1: string;
   n1_value: string;
   n2: string;
   n2_value: string;
   tekst: string;
   tekst_value: string;
-  
+
   constructor(refnummer: string, id: string, bId: string, udskriftsDato: string, dokType: string, visRaadgiver: string,
-  synligNetbank: string, sletDato: string, fejlMarkeret: string, forsendelsesKode: string, n1: string, n1_value: string, n2: string,
-  n2_value: string, tekst: string, tekst_value: string) {
+    synligNetbank: string, sletDato: string, fejlMarkeret: string, forsendelsesKode: string, kundeLeast: string, 
+    e_underskrevet: string, autogenereret: string, n1: string, n1_value: string, n2: string, n2_value: string, 
+    tekst: string, tekst_value: string) {
     this.refnummer = refnummer;
     this.id = id;
     this.bId = bId;
@@ -37,5 +41,5 @@ export class BDDocument {
     this.tekst_value = tekst_value;
   }
 
-  
+
 }
