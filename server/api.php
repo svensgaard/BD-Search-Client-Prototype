@@ -2,6 +2,7 @@
 header('Access-Control-Allow-Origin: *');
 if(!empty($_GET['id']) && !empty($_GET['dateFrom']) && !empty($_GET['dateTo']))
 {
+	searchTerm = null;
 	if(!empty($_GET['searchTerm'])) {
 		$searchTerm=$_GET['searchTerm'];
 	}
