@@ -99,7 +99,6 @@ export class SearchComponent implements OnInit {
   }
 
   emitFilter() {
-    console.log('filter changed:');
     this.filterChange.emit(this.filter);
   }
 

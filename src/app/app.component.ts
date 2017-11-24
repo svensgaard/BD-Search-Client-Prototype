@@ -45,6 +45,15 @@ export class AppComponent implements OnInit {
     this._filter = newFilter;
     if (this.results != null) {
       this._resultWrapper = this.filter.getFilteredDocs(this.results);
+      this.checkFilterResult();
+    }
+  }
+
+  checkFilterResult() {
+    if(this._resultWrapper.categories == null || this._resultWrapper.categories.length === 0) {
+      this.displayError = 'inline';        
+    }else {
+      this.displayError = 'none';        
     }
   }
 
@@ -52,7 +61,8 @@ export class AppComponent implements OnInit {
     if (searchResult != null) {
       this.results = searchResult;
       this._resultWrapper = this.filter.getFilteredDocs(this.results);
-      this.displayError = 'none';
+
+      this.checkFilterResult();      
     } else {
       this.displayError = 'inline';
       this.results = null;

@@ -45,7 +45,7 @@ export class Filter {
   getFilteredDocs(docs: BDDocument[]): ResultWrapper {
     let wrapper = new ResultWrapper();
     let categories = new Array<Category>();
-    console.log(this.selectedItems);
+
     for (let doc of docs) {
       if (this.checkFilter(doc)) {
         if (this.selectedSortOption === 'Dokumenttype (Å til A)') {
@@ -91,7 +91,7 @@ export class Filter {
       newCat.addDocument(doc);
 
       categories.push(newCat);
-    }   
+    }
   }
 
   checkFilter(doc: BDDocument): boolean {
@@ -108,7 +108,7 @@ export class Filter {
     if (doc === null) { return false; }
 
     if (this.checkSelectedItem(5) && !doc.forsendelsesKode.includes('K')) {
-        return false;
+      return false;
     }
 
     return true;
@@ -118,7 +118,7 @@ export class Filter {
     if (doc === null) { return false; }
 
     if (this.checkSelectedItem(4) && !doc.forsendelsesKode.includes('E')) {
-        return false;
+      return false;
     }
 
     return true;
@@ -137,7 +137,7 @@ export class Filter {
   checkLæst(doc: BDDocument): boolean {
     if (doc === null) { return false; }
 
-    if (this.checkSelectedItem(2) && doc.kundeLeast === 'N') {
+    if (this.checkSelectedItem(2) && doc.kundeLaest === 'N') {
       return false;
     }
 
@@ -166,7 +166,6 @@ export class Filter {
 
   checkFaulty(doc: BDDocument): boolean {
     if (doc === null) { return false; }
-    console.log(doc);
     if (this.checkSelectedItem(6) && doc.fejlMarkeret === '0') {
       return false;
     }
