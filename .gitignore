@@ -40,3 +40,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# Server files
+src\app\doktyper.service.ts
+src\app\document.service.ts
