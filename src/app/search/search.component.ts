@@ -94,6 +94,12 @@ export class SearchComponent implements OnInit {
       .subscribe(docs => this.result = docs);
   }
 
+  /*reset(formElem: Element){
+    formElemnt.reset();
+  }
+  <button (click)="reset(#searchForm)">Nulstil</button>
+  */
+
   toogleAdvanced() {
     if (this.displayAdvanced === 'none') {
       this.displayAdvanced = 'inline';

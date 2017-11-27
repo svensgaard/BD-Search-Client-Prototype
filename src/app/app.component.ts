@@ -51,9 +51,9 @@ export class AppComponent implements OnInit {
 
   checkFilterResult() {
     if(this._resultWrapper.categories == null || this._resultWrapper.categories.length === 0) {
-      this.displayError = 'inline';        
+      this.displayError = 'block';
     }else {
-      this.displayError = 'none';        
+      this.displayError = 'none';
     }
   }
 
@@ -62,9 +62,9 @@ export class AppComponent implements OnInit {
       this.results = searchResult;
       this._resultWrapper = this.filter.getFilteredDocs(this.results);
 
-      this.checkFilterResult();      
+      this.checkFilterResult();
     } else {
-      this.displayError = 'inline';
+      this.displayError = 'block';
       this.results = null;
       this._resultWrapper = null;
     }

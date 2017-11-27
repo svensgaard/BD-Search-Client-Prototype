@@ -19,6 +19,13 @@
   border-color: white;
 }
 
+.categoryHeader span {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 15px;
+  margin-left: 5px;
+}
+
 .categoryHeader:hover {
   background-color: #4ea3fd;
   cursor: pointer;
@@ -31,7 +38,6 @@
 .categoryContent table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed;
 }
 
 .categoryContent tr:nth-child(odd) {

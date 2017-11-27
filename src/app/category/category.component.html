@@ -1,23 +1,23 @@
 
 <div class="categoryHeader" (click)="onClickHeader()">
 	<div style="float:left;">{{category.name}}
-		({{category.numberOfDocuments}} dokumenter)</div>
+    <span>({{category.numberOfDocuments}} dokumenter)</span></div>
 	<div class="categoryStatusIndicator"><i class="material-icons">{{headerStatusIndicator}}</i></div>
 </div>
 <div class="categoryContent" [style.display]="display">
 	<table>
 		<tr>
-			<th class="checkboxColumn"><input type="checkbox" [(ngModel)]="allChecked"></th>
-			<th class="shortDateColumn">Dag</th>
-			<th class="shortDateColumn">Dato</th>
-			<th class="docTypeColumn">Dokumenttype</th>
+			<th><input type="checkbox" [(ngModel)]="allChecked"></th>
+			<th>Dag</th>
+			<th>Dato</th>
+			<th>Dokumenttype</th>
 			<th>Details</th>
 		</tr>
 		<tr *ngFor="let document of category.documents; let i = index; let k = index;" [popper]="i" [popperTrigger]="'hover'" [popperPlacement]="'bottom'" [popperShowOnStart]="false">
-			<td><input type="checkbox" [ngModel]="document.checked" (ngModelChange)="checkedDoc($event, k)"></td>
-			<td>{{document.udskriftsDato | date:'EEEE'}} d.
-				{{document.udskriftsDato | date:'dd/MM/y'}}</td>
-			<td>{{document.dokType}}</td>
+			<td class="checkboxColumn"><input type="checkbox" [ngModel]="document.checked" (ngModelChange)="checkedDoc($event, k)"></td>
+      <td class="shortDateColumn">{{document.udskriftsDato | danishWeekday}}</td>
+      <td class="shortDateColumn">{{document.udskriftsDato | date:'dd/MM/y'}}</td>
+			<td class="docTypeColumn">{{document.dokType}}</td>
 			<td>{{buildDetails(document)}}</td>
 			<popper-content #i>
 				<app-popper-content [doc]="document"></app-popper-content>

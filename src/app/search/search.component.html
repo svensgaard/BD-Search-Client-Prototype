@@ -1,5 +1,5 @@
 <header>
-    <form class="searchForm">
+    <form class="searchForm" #searchForm>
         <input auto-complete type="search" class="searchInput" [(ngModel)]="searchString" [source]="sourceArray"
         placeholder="Søg dokumenttype eller detaljer" name="searchInput" no-match-found-text="Dokumenttype ikke fundet" />
 

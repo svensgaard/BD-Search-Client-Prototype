@@ -20,13 +20,13 @@ export class Filter {
 
   constructor() {
     this.dropdownList = [
-      { 'id': 1, 'itemName': 'Synlig i Netbank', image: '../assets/netbank.png', category: 'et' },
-      { 'id': 2, 'itemName': 'Kunden har læst dokumentet', image: '../assets/read.png', category: 'et' },
-      { 'id': 3, 'itemName': 'Dokumentet er underskrevet', image: '../assets/signed.png', category: 'et' },
-      { 'id': 4, 'itemName': 'Sendt til E-boks', image: '../assets/eboks.png', category: 'et' },
-      { 'id': 5, 'itemName': 'Sendt som brev', image: '../assets/letter.png', category: 'et' },
-      { 'id': 6, 'itemName': 'Fejlbehæftet', image: null, category: 'to' },
-      { 'id': 7, 'itemName': 'Autogenereret', image: null, category: 'to' },
+      { 'id': 1, 'itemName': 'Synlig i Netbank', image: '../assets/netbank.png', category: 'Filtre' },
+      { 'id': 2, 'itemName': 'Kunden har læst dokumentet', image: '../assets/read.png', category: 'Filtre' },
+      { 'id': 3, 'itemName': 'Dokumentet er underskrevet', image: '../assets/signed.png', category: 'Filtre' },
+      { 'id': 4, 'itemName': 'Sendt til E-boks', image: '../assets/eboks.png', category: 'Filtre' },
+      { 'id': 5, 'itemName': 'Sendt som brev', image: '../assets/letter.png', category: 'Filtre' },
+      { 'id': 6, 'itemName': 'Fejlbehæftet', image: null, category: 'Filtre' },
+      { 'id': 7, 'itemName': 'Fravælg Autogenererede', image: null, category: 'Fravalg' },
     ];
 
     this.selectedItems = [];
@@ -37,7 +37,8 @@ export class Filter {
       unSelectAllText: 'Fravælg Alle',
       classes: 'filterSelect custom-class',
       badgeShowLimit: 1,
-      //groupBy: 'category'
+      groupBy: 'category',
+      maxHeight: 360
     };
 
   }
@@ -147,11 +148,23 @@ export class Filter {
   checkAutoGen(doc: BDDocument): boolean {
     if (doc === null) { return false; }
 
-    if (this.checkSelectedItem(7) && doc.autogenereret === 'N') {
+    if (this.checkSelectedItem(7) && doc.autogenereret === 'J') {
       return false;
     }
 
     return true;
+
+    /*if (this.checkSelectedItem(7) || this.dokTyper == null) {
+      return true;
+    } else {
+
+      for (let dt of this.dokTyper) {
+        if (doc.dokType === dt.dokType && dt.autogenereret === 'N') {
+          return true;
+        }
+      }
+      return false;
+    }*/
   }
 
   checkNetBank(doc: BDDocument): boolean {

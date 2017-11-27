@@ -6,5 +6,15 @@
 	<!-- <app-filter [(filter)]="filter"></app-filter> -->
 	<!-- output -->
 	<app-documents [resultWrapper]="filteredResults"></app-documents>
-	<div [style.display]="displayError" style="color:RED;font-weight:bold;font-size:35px">Ingen dokumenter fundet</div>
+	<div [style.display]="displayError" class="noDocsFound">
+    <h2>Der blev ikke fundet nogen dokumenter</h2>
+
+    <i>Tips til forbedring:</i>
+      <ul>
+        <li>Tjek om du har stavet rigtigt i søgefeltet</li>
+        <li>Prøv at udvide din søgning ved at fjerne nogle filtre</li>
+        <li>Prøve at udvide perioden du søger indenfor</li>
+        <li>Nogle gange er det bedre ikke at søge. Nulstil søgningen og skim listen af sektioner. <br>Skift eventuelt visning øverst til højre</li>
+      </ul>
+  </div>
 </div>
