@@ -9,13 +9,14 @@
 		<tr>
 			<th class="checkboxColumn"><input type="checkbox" [(ngModel)]="allChecked"></th>
 			<th class="shortDateColumn">Dag</th>
+			<th class="shortDateColumn">Dato</th>
 			<th class="docTypeColumn">Dokumenttype</th>
 			<th>Details</th>
 		</tr>
 		<tr *ngFor="let document of category.documents; let i = index; let k = index;" [popper]="i" [popperTrigger]="'hover'" [popperPlacement]="'bottom'" [popperShowOnStart]="false">
 			<td><input type="checkbox" [ngModel]="document.checked" (ngModelChange)="checkedDoc($event, k)"></td>
 			<td>{{document.udskriftsDato | date:'EEEE'}} d.
-				{{document.udskriftsDato | date:'d/M/y'}}</td>
+				{{document.udskriftsDato | date:'dd/MM/y'}}</td>
 			<td>{{document.dokType}}</td>
 			<td>{{buildDetails(document)}}</td>
 			<popper-content #i>

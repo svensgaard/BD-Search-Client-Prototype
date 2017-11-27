@@ -1,11 +1,11 @@
 <header>
     <form class="searchForm">
-        <input auto-complete type="text" class="searchInput" [(ngModel)]="searchString" [source]="sourceArray"
-        placeholder="Dokumenttype" name="searchInput" no-match-found-text="Dokumenttype ikke fundet" />
+        <input auto-complete type="search" class="searchInput" [(ngModel)]="searchString" [source]="sourceArray"
+        placeholder="Søg dokumenttype eller detaljer" name="searchInput" no-match-found-text="Dokumenttype ikke fundet" />
 
         <input type="date" [value]="dateFrom | date:'yyyy-MM-dd'" (input)="dateFrom=$event.target.valueAsDate" name="dateFrom" />
 
-        <label for="dateFrom">til </label>
+        <label for="dateTo">til </label>
         <input type="date" [value]="dateTo | date:'yyyy-MM-dd'" (input)="dateTo=$event.target.valueAsDate" name="dateTo" />
 
         <button class="flat-button" type="submit" (click)="onSearchPressed()">Søg</button>
@@ -42,7 +42,7 @@
         </c-item>
       </angular2-multiselect>
 
-      <select class="orderSelect" [value]="filter.selectedSortOption" (change)="onSortChanged($event.target.value)">
+      <select class="orderSelect selectSizeNormalizer" [value]="filter.selectedSortOption" (change)="onSortChanged($event.target.value)">
           <option>Dokumenttype (Å til A)</option>
           <option>Dokumenttype (A til Å)</option>
           <option>Måned (Nyeste først)</option>
