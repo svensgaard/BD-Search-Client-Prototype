@@ -1,3 +1,4 @@
+import { CheckedDocumentsService } from './../checked-documents.service';
 import { Filter } from './../Classes/filter';
 import { BDDokType } from './../Classes/BDDokType';
 import { Component, OnInit, Output, EventEmitter, Input, ViewEncapsulation, ViewContainerRef } from '@angular/core';
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit {
 
   private _results: BDDocument[];
   private _dokTypes: BDDokType[];
+  private _selectedAction: string;
 
   displayAdvanced = 'none';
 
@@ -44,6 +46,7 @@ export class SearchComponent implements OnInit {
   constructor(
     private documentService: DocumentService,
     private documentTypeService: DoktyperService,
+    private _checkedDocsService: CheckedDocumentsService,
     public toastr: ToastsManager,
     vcr: ViewContainerRef
   ) {
@@ -54,6 +57,7 @@ export class SearchComponent implements OnInit {
   ngOnInit() {
     this.sourceArray = new Array();
     this.searchString = '';
+    this._selectedAction = '';
 
     this.search();
     //Get dok types
@@ -107,23 +111,34 @@ export class SearchComponent implements OnInit {
     this.emitFilter();
   }
 
-  onSelectAction(value): void {
-    switch (value) {
-      case 'addToAssignment':
-        this.toastr.success('Dokument(erne) er tilføjet til opgaven', 'Tilføjet til opgave');
-        break;
-      case 'download':
-        this.toastr.success('Dokument(erne) er downloadet', 'Download fil(er)');
-        break;
-      case 'print':
-        this.toastr.success('Dokument(erne) bliver nu pakket til print', 'Sendt til print');
-        break;
-      case 'errorMark':
-        this.toastr.success('Dokument(erne) sendes til fejlmarkering', 'Fejlmarkering');
-        break;
-      default:
-        this.toastr.info('Du har ikke valgt nogen handling...', 'Ingen handling valgt');
+  get selectedAction(): string {
+    return this._selectedAction;
+  }
+
+  set selectedAction(value: string) {
+    this._selectedAction = '';
+    if (this._checkedDocsService.checkedDocuments !== 0) {
+      switch (value) {
+        case 'addToAssignment':
+          this.toastr.success(this._checkedDocsService.checkedDocuments + ' Dokumenter er tilføjet til opgaven', 'Tilføjet til opgave');
+          break;
+        case 'download':
+          this.toastr.success(this._checkedDocsService.checkedDocuments + ' Dokumenter er downloadet', 'Download fil(er)');
+          break;
+        case 'print':
+          this.toastr.success(this._checkedDocsService.checkedDocuments + ' Dokumenter bliver nu pakket til print', 'Sendt til print');
+          break;
+        case 'errorMark':
+          this.toastr.success(this._checkedDocsService.checkedDocuments + ' Dokumenter sendes til fejlmarkering', 'Fejlmarkering');
+          break;
+        default:
+          this.toastr.info('Du har ikke valgt nogen handling...', 'Ingen handling valgt');
+      }
+    } else {
+      this.toastr.warning('Vælg et dokument til handling', 'Ingen dokumenter valgt');
     }
+
+
   }
 
   //Filter methods

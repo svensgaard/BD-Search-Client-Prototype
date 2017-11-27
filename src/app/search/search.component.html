@@ -14,7 +14,7 @@
     </form>
 
     <div class="actions">
-        <select #actionList name="actionList" id="actionList" (change)="onSelectAction(actionList.value)">
+        <select id="actionList" [(ngModel)] = "selectedAction">
             <option value="">Vælg Handling</option>
             <option value="addToAssignment">Tilknyt til Opgave</option>
             <option value="download">Download Fil(er)</option>

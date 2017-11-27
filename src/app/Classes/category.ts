@@ -14,6 +14,7 @@ export class Category {
   get numberOfDocuments(): number {return this.documents.length; }
 
   addDocument(docToAdd: BDDocument) {
+    docToAdd['checked'] = false;
     this.documents.push(docToAdd);
   }
 

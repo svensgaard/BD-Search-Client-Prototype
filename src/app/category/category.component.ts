@@ -1,3 +1,4 @@
+import { CheckedDocumentsService } from './../checked-documents.service';
 import {BDDocument} from '../Classes/bddocument';
 import {Category} from '../Classes/category';
 import {Component, OnInit, Input} from '@angular/core';
@@ -10,14 +11,16 @@ import {Component, OnInit, Input} from '@angular/core';
 export class CategoryComponent implements OnInit {
 
   private _category: Category;
+  private _allChecked: boolean;
 
   display = 'none';
   headerStatusIndicator = 'keyboard_arrow_down';
 
-  constructor() {
+  constructor(private _checkedDocsService: CheckedDocumentsService) {
   }
 
   ngOnInit() {
+    this._allChecked = false;
   }
 
   @Input()
@@ -26,6 +29,22 @@ export class CategoryComponent implements OnInit {
   }
   get category(): Category {
     return this._category;
+  }
+
+  checkedDoc(value:boolean, index: number) {
+    if(value) {this._checkedDocsService.checkedDocuments++;} else {this._checkedDocsService.checkedDocuments --;}
+    this.category.documents[index]['checked'] = value;
+  }
+
+  get allChecked(): boolean {
+    return this._allChecked;
+  }
+  set allChecked(value: boolean) {
+    for(let doc of this.category.documents) {
+      doc['checked'] = value;
+      if(value) {this._checkedDocsService.checkedDocuments++;} else {this._checkedDocsService.checkedDocuments --;}
+    }
+    this._allChecked = value;
   }
 
   buildDetails(document: BDDocument) {

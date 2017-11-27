@@ -7,13 +7,13 @@
 <div class="categoryContent" [style.display]="display">
 	<table>
 		<tr>
-			<th class="checkboxColumn"><input type="checkbox"></th>
+			<th class="checkboxColumn"><input type="checkbox" [(ngModel)]="allChecked"></th>
 			<th class="shortDateColumn">Dag</th>
 			<th class="docTypeColumn">Dokumenttype</th>
 			<th>Details</th>
 		</tr>
-		<tr *ngFor="let document of category.documents; let i = index;" [popper]="i" [popperTrigger]="'hover'" [popperPlacement]="'bottom'" [popperShowOnStart]="false">
-			<td><input type="checkbox"></td>
+		<tr *ngFor="let document of category.documents; let i = index; let k = index;" [popper]="i" [popperTrigger]="'hover'" [popperPlacement]="'bottom'" [popperShowOnStart]="false">
+			<td><input type="checkbox" [ngModel]="document.checked" (ngModelChange)="checkedDoc($event, k)"></td>
 			<td>{{document.udskriftsDato | date:'EEEE'}} d.
 				{{document.udskriftsDato | date:'d/M/y'}}</td>
 			<td>{{document.dokType}}</td>

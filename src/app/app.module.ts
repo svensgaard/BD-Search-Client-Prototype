@@ -1,3 +1,4 @@
+import { CheckedDocumentsService } from './checked-documents.service';
 import { RootComponent } from './real.root.component';
 import { DoktyperService } from './doktyper.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -43,7 +44,7 @@ import {ToastModule} from 'ng2-toastr';
     BrowserAnimationsModule,
     ToastModule.forRoot()
   ],
-  providers: [DocumentService, DoktyperService],
+  providers: [DocumentService, DoktyperService, CheckedDocumentsService],
   bootstrap: [RootComponent]
 })
 export class AppModule { }

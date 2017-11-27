@@ -35,7 +35,6 @@ constructor() { }
   @Input()
   set doc(document: BDDocument) {
     this._doc = document;
-    console.log(document);
     //Netbank
     if(this._doc.synligNetbank === 'J') {
       this.netBankIconDisplay = 'table-row';
