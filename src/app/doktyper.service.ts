@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 export class DoktyperService {
 
   //private documentsUrl = 'http://localhost/Webprojects/Bankdata/BD-Search-Client-Prototype/server/';
-  //private documentsUrl = '/server/';
-  private documentsUrl= 'http://localhost:8080/';
+  private documentsUrl = '/server/';
+  //private documentsUrl= 'http://localhost:8080/';
 
     constructor(
       private http: HttpClient
